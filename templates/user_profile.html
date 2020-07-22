@@ -1,0 +1,79 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Mitsein
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/application.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/user_profile.css') }}">
+{% endblock %}
+
+{% block navbar %}
+<div id="main_page">
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="/">Mitsein</a>
+    <img src="static/images/hand_holding_1.jpeg" style="width:65px;height:65px;margin-top:20px;margin-left:-20px;" />
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto" id="navbar-content">
+        <li class="nav-item">
+          <a class="nav-link " href="/" role="button">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/" role="button">
+            Social coordination
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/" role="button">
+            Stock exchange
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/" role="button">
+            Transparency
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/API_documentation" role="button">
+            API
+          </a>
+        </li>
+        <li class="nav-item">
+          <a id="profile_button" class="nav-link " href="/logout" role="button">
+            Logout
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+  <div class="jumbotron jumbotron-fluid page">
+    <div id="user_details">
+      <h2 align="center">Name: {{ current_user.name }}</h2>
+      <h2 align="center">Wallet address: {{ current_user.wallet_address }}</h2>
+    </div>
+    <a id="create_wallet_button" class="nav-link " href="/wallet/new" role="button">
+      Create Wallet
+    </a>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+{% endblock %}

@@ -1,0 +1,106 @@
+#logo_img{
+  height: 10px;
+  width: 10px;
+}
+
+#welcome_homepage_div{
+	background-color: #303030;
+	height: 90%;
+}
+
+#bug_title_div{
+	background: black;
+	width: 170px;
+	height:120px;
+	margin: auto;
+}
+
+#bug_title {
+	padding-top: 10%;
+	font-size: 7em;
+	color: white;
+}
+
+#concept_mitsein {
+	text-align: center;
+	padding-left: 5em;
+	padding-right: 5em;
+	padding-top: 1.5em;
+	font-size: 5em;
+	color: white;
+}
+
+#services_div{
+	background-color: white;
+	height: 200px;
+}
+
+#title_network{
+	font-size: 5em;
+}
+
+
+.title_service{
+	font-size: 5em;
+}
+
+.grid_item{
+	margin: 20px;
+	padding: 50px;
+	border: 2px solid #000;
+	border-radius: 15px;
+	height: 250px;
+}
+
+.icon_services{
+	margin: auto;
+	display: block;
+}
+
+.texto_service{
+	color: #A9A9A9;
+	font-size: 2em;
+}
+
+#foto_carousel{
+	background-color: black;
+	height: 200px;
+}
+
+#founder_homepage{
+	background-color: #303030;
+}
+
+#image_founder{
+	border-radius: 20%;
+}
+
+#founder_name{
+	color:white;
+	font-size: 4em;
+}
+
+#type_founder_homepage{
+	color:white;
+	font-size: 3em;
+}
+
+
+#text_founder_homepage{
+	color:white;
+	font-size: 2em;
+}
+
+#founder_wrapper{
+	display: flex;
+}
+
+#block_picture_founder{
+	margin-left: 20%;
+
+}
+
+#block_founder_details{
+	margin-left: 20px;
+	flex: 1;
+}
