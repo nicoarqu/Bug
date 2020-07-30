@@ -1,3 +1,4 @@
+
 #logo_img{
   height: 10px;
   width: 10px;
@@ -12,18 +13,28 @@
 	background: black;
 	width: 170px;
 	height:120px;
-	margin: auto;
+	margin:auto;
 }
 
 #bug_title {
+	display: inline-block;
 	padding-top: 10%;
+	padding-left: 5%;
 	font-size: 7em;
 	color: white;
+	float: left;
+}
+
+#bug_title_logo {
+	float: right;
+	display:inline-block;
+
+
 }
 
 #concept_mitsein {
 	text-align: center;
-	padding-left: 5em;
+	padding-left: 7em;
 	padding-right: 5em;
 	padding-top: 1.5em;
 	font-size: 5em;

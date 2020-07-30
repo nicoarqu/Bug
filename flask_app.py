@@ -91,6 +91,13 @@ class RegisterForm(FlaskForm):
 def index():
     return render_template("homepage.html", name="homepage", current_user=current_user)
 
+@app.route("/about_us")
+def about_us():
+    return render_template("about_us.html", name="about_us", current_user=current_user)
+
+@app.route("/contact_us")
+def contact_us():
+    return render_template("contact_us.html", name="contact_us", current_user=current_user)
 """
 @app.route('/login', methods=['GET', 'POST'])
 def login():
