@@ -49,6 +49,14 @@
 	font-size: 5em;
 }
 
+.title_service_link{
+	color: black;
+}
+
+.title_service_link:hover{
+	color: #A9A9A9;
+	text-decoration: none;
+}
 
 .title_service{
 	font-size: 5em;
