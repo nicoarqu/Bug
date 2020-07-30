@@ -6,7 +6,7 @@
 
 #welcome_homepage_div{
 	background-color: #303030;
-	height: 90%;
+	height: 40%;
 }
 
 #bug_title_div{
@@ -22,14 +22,11 @@
 	padding-left: 5%;
 	font-size: 7em;
 	color: white;
-	float: left;
 }
 
 #bug_title_logo {
 	float: right;
 	display:inline-block;
-
-
 }
 
 #concept_mitsein {
@@ -44,6 +41,8 @@
 #services_div{
 	background-color: white;
 	height: 200px;
+	display: block;
+	position: relative;
 }
 
 #title_network{
@@ -60,7 +59,7 @@
 	padding: 50px;
 	border: 2px solid #000;
 	border-radius: 15px;
-	height: 250px;
+	height: 260px;
 }
 
 .icon_services{
@@ -79,32 +78,39 @@
 }
 
 #founder_homepage{
+	margin-top: 500px;
+	height: 600px;
+	display:block;
+	position: relative;
 	background-color: #303030;
 }
 
 #image_founder{
+	margin-left:30%;
+	margin-top: 50px;
 	border-radius: 20%;
 }
 
 #founder_name{
+	margin-top: 50px;
 	color:white;
 	font-size: 4em;
 }
 
 #type_founder_homepage{
-	color:white;
-	font-size: 3em;
+	color:black;
+	font-size: 2.6em;
 }
 
 
-#text_founder_homepage{
+.text_founder_homepage{
+	margin-top: 50px;
+	margin-left: 30px;
 	color:white;
 	font-size: 2em;
 }
 
-#founder_wrapper{
-	display: flex;
-}
+
 
 #block_picture_founder{
 	margin-left: 20%;

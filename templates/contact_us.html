@@ -15,7 +15,7 @@ Mitsein
 {% block navbar %}
 <div id="main_page">
   <nav class="navbar navbar-expand-lg">
-    <a href="/"><img src="static/images/bug_logo.jpeg" style="width:56px;height:65px;margin-top:20px;margin-left:10px;" /></a>
+    <a href="/"><img src="static/images/bug_logo.jpeg" style="width:57px;height:70px;margin-top:20px;margin-left:-10px;" /></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -27,11 +27,11 @@ Mitsein
             About us
           </a>
         </li>
-        <li class="nav-item">
+        <!--<li class="nav-item">
           <a class="nav-link " href="/stockexchange" role="button">
             Partners
           </a>
-        </li>
+        </li>-->
         <li class="nav-item">
           <a class="nav-link " href="/stockexchange" role="button">
             Contact us
@@ -44,24 +44,13 @@ Mitsein
             </a>
           </li>
         {% else %}
-          <li class="nav-item">
-            <a id="profile_button" class="nav-link " href="/profile" role="button">
-              Profile
-            </a>
-          </li>
-          <li class="nav-item">
-            <a  class="nav-link " href="/logout" role="button">
-              Logout
-            </a>
-          </li>
         {% endif %}
       </ul>
     </div>
   </nav>
 {% endblock %}
 
-{% block content %}
-<div id="founder_homepage">
+{% block content %}  
   <br>
   <br>
   <br>
@@ -70,16 +59,8 @@ Mitsein
   <br>
   <br>
   <br>
-  <div id="founder_wrapper">
-    <div id="block_picture_founder">
-      <img src="static/images/founder_pic.jpg"  id="image_founder" alt="Avatar"/>
-    </div>
-    <div id="block_founder_details">
-      <h1>Write us at monicaseguel@bug-network.com</h1>
-    </div>
-  </div>
+  <h1 align="center">Write us an email at <b>monicaseguel@bug-network.com</b></h1>
   <br>
-</div>
 {% endblock %}
 
 {% block scripts %}

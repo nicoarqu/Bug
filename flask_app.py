@@ -55,12 +55,6 @@ class Users(UserMixin, db.Model):
     password = db.Column(db.String(80))
 
 
-
-class Price_history_mitsein(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    price = db.Column(db.Integer)
-    timestamp = db.Column(db.DateTime)
-
 """--------------------------------------------------------------------------------------------------------------------------------"""
 """-------------------------------------------------------SESSION------------------------------------------------------------------"""
 """--------------------------------------------------------------------------------------------------------------------------------"""
@@ -98,6 +92,23 @@ def about_us():
 @app.route("/contact_us")
 def contact_us():
     return render_template("contact_us.html", name="contact_us", current_user=current_user)
+
+@app.route("/fund_searcher")
+def fund_searcher():
+    return render_template("fund_searcher.html", name="fund_searcher", current_user=current_user)
+
+@app.route("/matching")
+def matching():
+    return render_template("matching.html", name="matching", current_user=current_user)
+
+@app.route("/resources")
+def resources():
+    return render_template("resources.html", name="resources", current_user=current_user)
+
+@app.route("/events")
+def events():
+    return render_template("events.html", name="events", current_user=current_user)
+
 """
 @app.route('/login', methods=['GET', 'POST'])
 def login():
