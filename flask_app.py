@@ -68,17 +68,25 @@ def cleanhtml(raw_html):
   return cleantext
 
 def ordenar_dates(new_news_list):
-    ordered_list_dict = {"2020": [], "2019":[], "2018":[], "2017":[]}
+    ordered_list_dict = {"2020": {"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}, "2019":{"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}, "2018":{"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}}
     for news_dict in new_news_list:
         date_elements = news_dict["pubDate"].split(" ")
+        day = date_elements[1]
+        month = date_elements[2]
         year = date_elements[3]
         if year in ordered_list_dict.keys():
-            ordered_list_dict[year].append(news_dict)
-    new_ordered_news_list = []
+            ordered_list_dict[year][month].append(news_dict)
     for year in ordered_list_dict.keys():
-        year_list = ordered_list_dict[year]
-        for event in year_list:
-            new_ordered_news_list.append(event)
+        year_dict = ordered_list_dict[year]
+        for month in year_dict.keys():
+            if year_dict[month]:
+                year_dict[month] = sorted(year_dict[month], key = lambda i: i['pubDate'].split(" ")[1], reverse=True)
+                print(year_dict[month])
+    new_ordered_news_list = []
+    for year_key in ordered_list_dict.keys():
+        for month_key in ordered_list_dict[year_key].keys():
+            for news_dict in ordered_list_dict[year_key][month_key]:
+                new_ordered_news_list.append(news_dict)
     return new_ordered_news_list
     
 
@@ -178,7 +186,6 @@ def resources():
 def events():
     new_news_list = get_news_info()
     new_news_list.sort(key=lambda item:item['pubDate'], reverse=True)
-    print(new_news_list)
     new_news_list = ordenar_dates(new_news_list)
     new_news_list = clean_events(new_news_list)
     return render_template("events.html", name="events", current_user=current_user, new_news_list=new_news_list)

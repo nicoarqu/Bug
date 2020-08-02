@@ -51,14 +51,15 @@ BUG
 {% endblock %}
 
 {% block content %}
-<div >
+<div id="news_page_div">
+  <h1 id="title_news" align="center">News</h1>
   <br>
   <br>
   <br>
   <br>
   {% for news in new_news_list %}
-    <div> 
-      <h1 id="news_title"><b>{{news.titulo}}</b></h1> 
+    <div class="div_news"> 
+      <h1 id="news_title"><b><a href="{{news.link}}">{{news.titulo}}</a></b></h1> 
       <p id="news_date">{{news.pubDate}}</p>
       <h2>{{news.summary}}</h2>
     </div>

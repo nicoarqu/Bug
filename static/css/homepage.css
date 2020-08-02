@@ -149,3 +149,10 @@
 	flex: 1;
 	overflow: hidden;
 }
+
+#social_media_homepage{
+	float:right;
+	font-size: 5rem; 
+	margin-right:50px;	
+}
+
