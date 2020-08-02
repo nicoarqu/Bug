@@ -55,29 +55,16 @@ BUG
             Contact us
           </a>
         </li>
-        {% if not current_user %}
-          <li class="nav-item">
-            <a id="create_account_button" class="nav-link nav_link_homepage"  href="/signup" role="button">
-              Sign up
-            </a>
-          </li>
-          <li class="nav-item">
-            <a id="create_account_button" class="nav-link nav_link_homepage" href="/login" role="button">
-              Log in
-            </a>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a id="profile_button" class="nav-link nav_link_homepage" href="/profile" role="button">
-              Profile
-            </a>
-          </li>
-          <li class="nav-item">
-            <a  class="nav-link nav_link_homepage"  href="/logout" role="button">
-              Logout
-            </a>
-          </li>
-        {% endif %}
+        <li class="nav-item">
+          <a class="nav-link nav_link_homepage"  href="/signup" role="button">
+            Sign up
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav_link_homepage" href="/login" role="button">
+            Log in
+          </a>
+        </li>
       </ul>
     </div>
     </nav>
