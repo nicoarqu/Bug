@@ -37,14 +37,6 @@ def cargar_filtros():
         filters_dict = json.load(filters_file)
         return filters_dict 
 
-def load_compiled_data():
-    with open("data/compiled_data.json", 'r', encoding="utf-8") as compiled_data_file:
-        compiled_data_dict = json.load(compiled_data_file)
-        return compiled_data_dict 
-
-def write_compiled_data(compiled_data_dict):
-    with open("data/compiled_data.json", 'w', encoding="utf-8") as compiled_data_file:
-        json.dump(compiled_data_dict, compiled_data_file)
 
 def cargar_combinaciones_palabras():
     with open("data/word_combinations.json", "r") as combinations_file:
@@ -63,20 +55,10 @@ def get_webscraping_content(fund_name, url):
     return textContent
 
 def get_rss_content(fund_name, contenido):
-    titles_list = []
-    compiled_data_dict = load_compiled_data()
-    if fund_name in compiled_data_dict.keys():
-        fund_compiled_data = compiled_data_dict[fund_name]
-    else:
-        compiled_data_dict[fund_name] = []
     lista_diccionarios_entries = []
     for entry in contenido.entries:
         """Loop por todos los articulos de la fuente"""
         titulo_noticia = entry.title
-        if titulo_noticia in titles_list:
-            continue
-        else:
-            titles_list.append(titulo_noticia)
         """AQUI EL PROBLEMA"""
         cotenido = ""
         try:
@@ -110,7 +92,6 @@ def get_rss_content(fund_name, contenido):
             """Si es que la fecha de publicación de la noticia es el día de
              hoy entonces incluir"""
             lista_diccionarios_entries.append({"titulo":titulo_noticia, "link":link_noticia,"summary": contenido,"pubDate": pubdate,"fuente": fund_name})
-            compiled_data_dict[fund_name].append({"titulo":titulo_noticia, "link":link_noticia,"summary": contenido,"pubDate": pubdate,"fuente": fund_name})
             continue
         elif "updated" in entry.keys():
             pubdate = entry.updated
@@ -131,9 +112,7 @@ def get_rss_content(fund_name, contenido):
             if num_ocurrencias == 3:
                 print("si")"""
             lista_diccionarios_entries.append({"titulo":titulo_noticia, "link":link_noticia,"summary": contenido,"pubDate": pubdate,"fuente": fund_name})
-            compiled_data_dict[fund_name].append({"titulo":titulo_noticia, "link":link_noticia,"summary": contenido,"pubDate": pubdate,"fuente": fund_name})
             continue
-    write_compiled_data(compiled_data_dict)
     return lista_diccionarios_entries
 
 def webscraper(webscraping_list):

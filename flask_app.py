@@ -179,6 +179,7 @@ def events():
     new_news_list.sort(key=lambda item:item['pubDate'], reverse=True)
     new_news_list = ordenar_dates(new_news_list)
     new_news_list = clean_events(new_news_list)
+    print(new_news_list)
     return render_template("events.html", name="events", current_user=current_user, new_news_list=new_news_list)
 
 @app.route('/login', methods=['GET', 'POST'])
