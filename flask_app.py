@@ -79,6 +79,7 @@ def ordenar_dates(new_news_list):
         year_list = ordered_list_dict[year]
         for event in year_list:
             new_ordered_news_list.append(event)
+    return new_ordered_news_list
     
 
 
@@ -177,9 +178,9 @@ def resources():
 def events():
     new_news_list = get_news_info()
     new_news_list.sort(key=lambda item:item['pubDate'], reverse=True)
+    print(new_news_list)
     new_news_list = ordenar_dates(new_news_list)
     new_news_list = clean_events(new_news_list)
-    print(new_news_list)
     return render_template("events.html", name="events", current_user=current_user, new_news_list=new_news_list)
 
 @app.route('/login', methods=['GET', 'POST'])
