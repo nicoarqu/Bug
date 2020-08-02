@@ -1,0 +1,198 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+BUG
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/application.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homepage.css') }}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid page" id="welcome_homepage_div">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div id="bug_title_div">
+    <h1 align="center" id="bug_title">BUG</h1>
+  </div>
+  <img src="static/images/bug_logo.jpeg" id="bug_title_logo" style="width:92px;height:118px;margin-top:-12em;margin-right: 38%;" />
+  <br>
+  <h2 id="concept_mitsein">
+    Creative Industry Network
+  </h2>
+  
+  <nav class="navbar navbar-expand-lg" id="navbar_homepage">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto" id="navbar-content">
+        <li class="nav-item">
+          <a class="nav-link nav_link_homepage"  href="/about_us" role="button">
+            About us
+          </a>
+        </li>
+        <!--<li class="nav-item">
+          <a class="nav-link " href="/stockexchange" role="button">
+            Partners
+          </a>
+        </li>-->
+        <li class="nav-item">
+          <a class="nav-link nav_link_homepage"  href="/contact_us" role="button">
+            Contact us
+          </a>
+        </li>
+        {% if not current_user %}
+          <li class="nav-item">
+            <a id="create_account_button" class="nav-link nav_link_homepage"  href="/signup" role="button">
+              Sign up
+            </a>
+          </li>
+          <li class="nav-item">
+            <a id="create_account_button" class="nav-link nav_link_homepage" href="/login" role="button">
+              Log in
+            </a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a id="profile_button" class="nav-link nav_link_homepage" href="/profile" role="button">
+              Profile
+            </a>
+          </li>
+          <li class="nav-item">
+            <a  class="nav-link nav_link_homepage"  href="/logout" role="button">
+              Logout
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+    </nav>
+  </div>
+  <div id="services_div">
+    <h1 align="center" id="title_network">Our Network</h1>
+    <div class="row">
+      <div class="col grid_item">
+        <svg class="icon_services" width="6em" height="6em" viewBox="0 0 16 16" class="bi bi-binoculars" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M3 2.5A1.5 1.5 0 0 1 4.5 1h1A1.5 1.5 0 0 1 7 2.5V5h2V2.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5v2.382a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V14.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 14.5v-3a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5v3A1.5 1.5 0 0 1 5.5 16h-3A1.5 1.5 0 0 1 1 14.5V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882V2.5zM4.5 2a.5.5 0 0 0-.5.5V3h2v-.5a.5.5 0 0 0-.5-.5h-1zM6 4H4v.882a1.5 1.5 0 0 1-.83 1.342l-.894.447A.5.5 0 0 0 2 7.118V13h4v-1.293l-.854-.853A.5.5 0 0 1 5 10.5v-1A1.5 1.5 0 0 1 6.5 8h3A1.5 1.5 0 0 1 11 9.5v1a.5.5 0 0 1-.146.354l-.854.853V13h4V7.118a.5.5 0 0 0-.276-.447l-.895-.447A1.5 1.5 0 0 1 12 4.882V4h-2v1.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V4zm4-1h2v-.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5V3zm4 11h-4v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14zm-8 0H2v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V14z"/>
+        </svg>
+        <a href="/fund_searcher" class="title_service_link"><h2 align="center" class="title_service">Global Fund Searcher</h2></a>
+        <br>
+        <p class="texto_service" align="center">Browser for cultural funds and grants around the world.</p>
+      </div>
+      <div class="col grid_item">
+        <svg class="icon_services" width="6em" height="6em" viewBox="0 0 16 16" class="bi bi-share" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M11.724 3.947l-7 3.5-.448-.894 7-3.5.448.894zm-.448 9l-7-3.5.448-.894 7 3.5-.448.894z"/>
+          <path fill-rule="evenodd" d="M13.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm0 10a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm-11-6.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+        </svg>
+        <a href="/matching" class="title_service_link"><h2 align="center" class="title_service">Matching</h2></a>
+        <br>
+        <p class="texto_service" align="center">An encounter between Traditional Industry and different areas of the Creative Industry.</p>
+      </div>
+      <div class="w-100"></div>
+      <div class="col grid_item">
+        <svg class="icon_services" width="6em" height="6em" viewBox="0 0 16 16" class="bi bi-calendar-event" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1zm1-3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z"/>
+          <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z"/>
+          <rect width="2" height="2" x="11" y="6" rx=".5"/>
+        </svg>
+        <a href="/events" class="title_service_link"><h2 align="center" class="title_service">Events and News</h2></a>
+        <br>
+        <p class="texto_service" align="center">Check our latest events and news</p>
+      </div>
+      <div class="col grid_item">
+        <svg class="icon_services" width="6em" height="6em" viewBox="0 0 16 16" class="bi bi-archive" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M2 5v7.5c0 .864.642 1.5 1.357 1.5h9.286c.715 0 1.357-.636 1.357-1.5V5h1v7.5c0 1.345-1.021 2.5-2.357 2.5H3.357C2.021 15 1 13.845 1 12.5V5h1z"/>
+          <path fill-rule="evenodd" d="M5.5 7.5A.5.5 0 0 1 6 7h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5zM15 2H1v2h14V2zM1 1a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H1z"/>
+        </svg>
+        <a href="/resources" class="title_service_link"><h2 align="center" class="title_service">Content</h2></a>
+        <br>
+        <p class="texto_service" align="center">Check the multiple resources that we offer about cultural funds and grants.</p>
+      </div>
+  </div>
+</div>
+</div>
+<!--<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="static/images/people.jpeg" alt="Chania">
+      <div class="carousel-caption">
+        <h3>Los Angeles</h3>
+        <p>LA is always so much fun!</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="static/images/artist.jpeg" alt="Chicago">
+      <div class="carousel-caption">
+        <h3>Chicago</h3>
+        <p>Thank you, Chicago!</p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="static/images/cultural.jpeg" alt="New York">
+      <div class="carousel-caption">
+        <h3>New York</h3>
+        <p>We love the Big Apple!</p>
+      </div>
+    </div>
+  </div> 
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+-->
+<div id="founder_homepage">
+  <div id="founder_wrapper">
+    <div id="block_picture_founder">
+      <img src="static/images/founder_pic.jpg"  id="image_founder" align="center" alt="Avatar"/>
+    </div>
+    <div id="block_founder_details">
+      <h1 id="founder_name" align="center">Monica Seguel</h1>
+      <h3 id="type_founder_homepage" align="center"><b>Founder and CEO</b></h3>
+      <div class="text_founder_homepage">
+        <h3 align="center">”Creo que una de las formas más orgánicas y eficientes de revitalizar la escena</h3> 
+        <h3 align="center">cultural es permitiendo el encuentro entre la Industria Tradicional y la Creativa“</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<h5>All rights reserved BUG Creative Industry Network</h5>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+{% endblock %}

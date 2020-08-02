@@ -1,0 +1,54 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Mitsein
+{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg">
+  <a href="/"><img src="static/images/bug_logo.jpeg" style="width:55px;height:70px;margin-top:20px;margin-left:-10px;" /></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto" id="navbar-content">
+      <li class="nav-item">
+        <a class="nav-link " href="/about_us" role="button">
+          About us
+        </a>
+      </li>
+      <!--<li class="nav-item">
+        <a class="nav-link " href="/stockexchange" role="button">
+          Partners
+        </a>
+      </li>-->
+      <li class="nav-item">
+        <a class="nav-link " href="/contact_us" role="button">
+          Contact us
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+	<form class="form-signin" method="POST" action="/login">
+		<h2>Please sign in</h2>
+	    {{ form.hidden_tag() }}
+	    {{ wtf.form_field(form.email) }}
+	    {{ wtf.form_field(form.password) }}
+	    {{ wtf.form_field(form.remember) }}
+	  <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/signup">Or sign up</a>
+	</form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script type="text/javascript"></script>
+{% endblock %}

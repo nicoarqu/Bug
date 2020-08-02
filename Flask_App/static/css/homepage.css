@@ -1,0 +1,151 @@
+#complete_homepage{
+	background-color: #303030;
+}
+
+.nav_link_homepage{
+	color: #A9A9A9;
+}
+
+#navbar_homepage{
+	margin-top: 20px;
+	color: #A9A9A9;
+}
+
+#logo_img{
+  height: 10px;
+  width: 10px;
+}
+
+#welcome_homepage_div{
+	background-color: #303030;
+	height: 40%;
+}
+
+#bug_title_div{
+	background: black;
+	width: 170px;
+	height:120px;
+	margin:auto;
+}
+
+#bug_title {
+	display: inline-block;
+	padding-top: 10%;
+	padding-left: 5%;
+	font-size: 7em;
+	color: white;
+}
+
+#bug_title_logo {
+	float: right;
+	display:inline-block;
+}
+
+#concept_mitsein {
+	text-align: center;
+	padding-left: 7em;
+	padding-right: 5em;
+	padding-top: 1.5em;
+	font-size: 5em;
+	color: white;
+}
+
+#services_div{
+	background-image: url("/static/images/background2.jpg");
+	background-size: 1700px 900px;
+	height: 720px;
+	display: block;
+	position: relative;
+	margin-bottom: -500px;
+	margin-top: -20px;
+}
+
+#title_network{
+	padding-top: 20px;
+	font-size: 5em;
+}
+
+.title_service_link{
+	color: #303030;
+}
+
+.title_service_link:hover{
+	color: #A9A9A9;
+	text-decoration: none;
+}
+
+.title_service{
+	font-size: 5em;
+}
+
+.grid_item{
+	margin: 20px;
+	padding: 50px;
+	border: 2px solid #000;
+	border-radius: 15px;
+	height: 270px;
+	background-color: rgba(255,255,255, 0.2);
+}
+
+.icon_services{
+	margin: auto;
+	display: block;
+}
+
+.texto_service{
+	color: #202020;
+	font-size: 2.5em;
+}
+
+#foto_carousel{
+	background-color: black;
+	height: 200px;
+}
+
+#founder_homepage{
+	margin-top: 500px;
+	height: 600px;
+	display:block;
+	position: relative;
+	background-color: #303030;
+}
+
+#image_founder{
+	margin-left:30%;
+	border-radius: 20%;
+}
+
+#founder_name{
+	margin-top: 50px;
+	color:white;
+	font-size: 4em;
+}
+
+#type_founder_homepage{
+	color:#A9A9A9;
+	font-size: 2.6em;
+}
+
+
+.text_founder_homepage{
+	margin-top: 50px;
+	margin-left: 30px;
+	color:white;
+	font-size: 2em;
+}
+
+#founder_wrapper{
+	padding-top: 150px;
+}
+
+#block_picture_founder{
+	margin-left: 20%;
+	float: left;
+
+}
+
+#block_founder_details{
+	margin-left: 20px;
+	flex: 1;
+	overflow: hidden;
+}

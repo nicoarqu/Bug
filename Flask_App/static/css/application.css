@@ -1,0 +1,143 @@
+*{
+  font-family: Futura, Arial, Times, serif;
+}
+
+
+
+.sidenav {
+  height: 100%;
+  width: 160px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  overflow-x: hidden;
+  padding-top: 16em;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 3em;
+  color: #150F58;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 260px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+}
+
+.navbar-brand {
+	font-size: 5em !important;
+  color: white;
+}
+
+.navbar-brand:hover {
+  color: white;
+  display: inline;
+}
+
+.navbar {
+  height: 4em;
+  background-color: transparent;
+  position: fixed;
+  transition: top 0.3s; 
+}
+
+.nav-item{
+  font-size: 2.5em;
+  margin-right: 1em; 
+}
+
+.nav-link{
+  color: black;
+}
+
+.nav-link:hover {
+  color: white ;
+}
+
+#navbar-content{
+  padding-left: 7em;
+  padding-top: 4em;
+}
+
+
+.li { 
+  display: inline;
+	color: green; 
+}
+
+.jumbotron {
+  background-color: transparent;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: transparent;
+  padding: 10px;
+  margin-top: 2em;
+}
+
+.grid-item {
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+
+
+#logo_img{
+  height:30px;
+  width:40px;
+}
+
+#create_account_button{
+  font-size: 1.5em;
+  margin-left: 250px;
+  color: white;
+  :hover{
+    color: #150F58;
+  };
+}
+.order_button{
+  height:50px;
+  width: 100px;
+}
+
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+/* Add some margins for each label */
+.form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+/* Style the input fields */
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.hammer_icon{
+  margin-top: 20px;
+  margin-left: 48%;
+}
+
+
