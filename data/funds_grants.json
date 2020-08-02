@@ -1,0 +1,25 @@
+{
+  "funds": [
+    {
+      "name": "European Cultural Foundation",
+      "url": "https://www.culturalfoundation.eu/grants-calls",
+      "location": "europe",
+      "type": "webscraping",
+      "area": "multiple"
+    },
+    {
+      "name": "Nordic Culture Point",
+      "url": "https://www.nordiskkulturkontakt.org/en/grants/about-the-grant-programmes/",
+      "location": "Nordic Countries",
+      "type": "webscraping",
+      "area": "multiple"
+    },
+    {
+      "name": "Bunnel Street Arts Center",
+      "url": "https://www.bunnellarts.org/artist-opportunities/",
+      "location": "Alaska",
+      "type": "webscraping",
+      "area": "art"
+    }
+  ]
+}

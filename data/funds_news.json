@@ -1,0 +1,32 @@
+{
+  "funds": [
+    {
+      "name": "European Cultural Foundation",
+      "url": "https://www.culturalfoundation.eu/news",
+      "location": "europe",
+      "type": "webscraping",
+      "area": "multiple"
+    },
+    {
+      "name": "Visegradfund",
+      "url": "https://www.visegradfund.org/feed/?post_type=new",
+      "location": "eastern-europe",
+      "type": "rss",
+      "area": "multiple"
+    },
+    {
+      "name": "Nordic Culture Point",
+      "url": "https://www.nordiskkulturkontakt.org/en/news/",
+      "location": "Nordic Countries",
+      "type": "webscraping",
+      "area": "multiple"
+    },
+    {
+      "name": "IIE",
+      "url": "https://www.iie.org/en/RSS-Feeds/RSS-Announcements",
+      "location": "worldwide",
+      "type": "rss",
+      "area": "multiple"
+    }
+  ]
+}

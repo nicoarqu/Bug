@@ -20,12 +20,12 @@ from flask_migrate import Migrate
 from flask_cors import CORS
 from flask_mail import Message, Mail
 from apscheduler.schedulers.background import BackgroundScheduler
-from cultural_funds_crawler import load_global
+import load_global
 import re
 
 def write_info_grants_json(rss_grants_data_dict_list, rss_news_data_dict_list):
     compiled_data_dict = {}
-    with open("info_grants.json", 'w', encoding="utf-8") as compiled_data_file:
+    with open("data/info_grants.json", 'w', encoding="utf-8") as compiled_data_file:
         compiled_data_dict["grants"] = rss_grants_data_dict_list
         compiled_data_dict["news"] = rss_news_data_dict_list
         json.dump(compiled_data_dict, compiled_data_file)
@@ -35,12 +35,12 @@ def add_grants_info():
     write_info_grants_json(rss_grants_data_dict_list, rss_news_data_dict_list)
 
 def get_grants_info():
-    with open("info_grants.json", 'r', encoding="utf-8") as compiled_data_file:
+    with open("data/info_grants.json", 'r', encoding="utf-8") as compiled_data_file:
         compiled_data_dict = json.load(compiled_data_file)
     return compiled_data_dict["grants"]
 
 def get_news_info():
-    with open("info_grants.json", 'r', encoding="utf-8") as compiled_data_file:
+    with open("data/info_grants.json", 'r', encoding="utf-8") as compiled_data_file:
         compiled_data_dict = json.load(compiled_data_file)
     return compiled_data_dict["news"]
 
