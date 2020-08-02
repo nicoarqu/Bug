@@ -24,11 +24,10 @@ from cultural_funds_crawler import load_global
 import re
 
 def write_info_grants_json(rss_grants_data_dict_list, rss_news_data_dict_list):
-    with open("info_grants.json", 'r', encoding="utf-8") as compiled_data_file:
-        compiled_data_dict = json.load(compiled_data_file)
+    compiled_data_dict = {}
     with open("info_grants.json", 'w', encoding="utf-8") as compiled_data_file:
-        compiled_data_dict["grants"].extend(rss_grants_data_dict_list)
-        compiled_data_dict["news"].extend(rss_news_data_dict_list)
+        compiled_data_dict["grants"] = rss_grants_data_dict_list
+        compiled_data_dict["news"] = rss_news_data_dict_list
         json.dump(compiled_data_dict, compiled_data_file)
 
 def add_grants_info():
@@ -43,7 +42,6 @@ def get_grants_info():
 def get_news_info():
     with open("info_grants.json", 'r', encoding="utf-8") as compiled_data_file:
         compiled_data_dict = json.load(compiled_data_file)
-    print(compiled_data_dict["news"])
     return compiled_data_dict["news"]
 
 def add_grants_info():
@@ -53,14 +51,15 @@ def add_grants_info():
 def clean_events(events_list):
     title_list = []
     clean_events_list = []
-    for event in events_list:
-        title = event["titulo"]
-        if title in title_list:
-            continue
-        else:
-            event["summary"] = cleanhtml(event["summary"])
-            clean_events_list.append(event)
-            title_list.append(title)
+    if events_list:
+        for event in events_list:
+            title = event["titulo"]
+            if title in title_list:
+                continue
+            else:
+                event["summary"] = cleanhtml(event["summary"])
+                clean_events_list.append(event)
+                title_list.append(title)
     return clean_events_list
 
 def cleanhtml(raw_html):
