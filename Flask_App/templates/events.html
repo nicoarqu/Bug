@@ -58,9 +58,9 @@ BUG
   <br>
   {% for news in new_news_list %}
     <div> 
-      <h3 id="news_date">{{news.pubDate}}</h3>
-      <h1 id="news_title">{{news.titulo}}</h1> 
-      {{news.summary}}
+      <h1 id="news_title"><b>{{news.titulo}}</b></h1> 
+      <p id="news_date">{{news.pubDate}}</p>
+      <h2>{{news.summary}}</h2>
     </div>
     <br>
     <br>

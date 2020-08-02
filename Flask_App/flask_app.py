@@ -21,6 +21,7 @@ from flask_cors import CORS
 from flask_mail import Message, Mail
 from apscheduler.schedulers.background import BackgroundScheduler
 from cultural_funds_crawler import load_global
+import re
 
 def write_info_grants_json(rss_grants_data_dict_list, rss_news_data_dict_list):
     with open("info_grants.json", 'r', encoding="utf-8") as compiled_data_file:
@@ -48,6 +49,41 @@ def get_news_info():
 def add_grants_info():
     rss_grants_data_dict_list, rss_news_data_dict_list = load_global.load_all()
     write_info_grants_json(rss_grants_data_dict_list, rss_news_data_dict_list)
+
+def clean_events(events_list):
+    title_list = []
+    clean_events_list = []
+    for event in events_list:
+        title = event["titulo"]
+        if title in title_list:
+            continue
+        else:
+            event["summary"] = cleanhtml(event["summary"])
+            clean_events_list.append(event)
+            title_list.append(title)
+    return clean_events_list
+
+def cleanhtml(raw_html):
+  cleanr = re.compile('<.*?>')
+  cleantext = re.sub(cleanr, '', raw_html)
+  return cleantext
+
+def ordenar_dates(new_news_list):
+    ordered_list_dict = {"2020": [], "2019":[], "2018":[], "2017":[]}
+    for news_dict in new_news_list:
+        date_elements = news_dict["pubDate"].split(" ")
+        year = date_elements[3]
+        if year in ordered_list_dict.keys():
+            ordered_list_dict[year].append(news_dict)
+    new_ordered_news_list = []
+    for year in ordered_list_dict.keys():
+        year_list = ordered_list_dict[year]
+        for event in year_list:
+            new_ordered_news_list.append(event)
+    
+
+
+
 
 
 scheduler = BackgroundScheduler()
@@ -142,6 +178,8 @@ def resources():
 def events():
     new_news_list = get_news_info()
     new_news_list.sort(key=lambda item:item['pubDate'], reverse=True)
+    new_news_list = ordenar_dates(new_news_list)
+    new_news_list = clean_events(new_news_list)
     return render_template("events.html", name="events", current_user=current_user, new_news_list=new_news_list)
 
 @app.route('/login', methods=['GET', 'POST'])
