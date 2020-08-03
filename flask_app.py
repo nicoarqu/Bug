@@ -144,6 +144,7 @@ app.config['LANGUAGES'] = {
     'en': 'English',
     'es': 'Español'
 }
+
 Bootstrap(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
