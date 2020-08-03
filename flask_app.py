@@ -39,6 +39,33 @@ def get_grants_info():
         compiled_data_dict = json.load(compiled_data_file)
     return compiled_data_dict["grants"]
 
+def filter_grants(news_list):
+    grants_list = []
+    for news_dict in news_list:
+        if key_word_exists(news_dict):
+            grants_list.append(news_dict)
+    return grants_list
+
+def key_word_exists(news_dict):
+    key_words = []
+    with open("data/filtering_words.json", "r") as key_words_file:
+        file_dict = json.load(key_words_file)
+        key_words = file_dict["palabras"]
+        non_key_words = file_dict["palabras no queridas"]
+    text = news_dict["summary"] + " " + news_dict["titulo"] 
+    regex = re.compile('[^a-zA-Z]')
+    text = regex.sub(' ', text)
+    print(text)
+    text_words = text.lower().split(" ")
+    for non_key_word in non_key_words:
+        if non_key_word in text_words:
+            return False
+    for key_word in key_words:
+        if key_word in text_words:
+            return True
+    return False
+
+
 def get_news_info():
     with open("data/info_grants.json", 'r', encoding="utf-8") as compiled_data_file:
         compiled_data_dict = json.load(compiled_data_file)
@@ -89,9 +116,6 @@ def ordenar_dates(new_news_list):
                 new_ordered_news_list.append(news_dict)
     return new_ordered_news_list
     
-
-
-
 
 
 scheduler = BackgroundScheduler()
@@ -171,7 +195,11 @@ def contact_us():
 
 @app.route("/fund_searcher")
 def fund_searcher():
-    new_grants_list = get_grants_info()
+    new_grants_list = get_news_info()
+    new_grants_list = filter_grants(new_grants_list)
+    new_grants_list.sort(key=lambda item:item['pubDate'], reverse=True)
+    new_grants_list = ordenar_dates(new_grants_list)
+    new_grants_list = clean_events(new_grants_list)
     return render_template("fund_searcher.html", name="fund_searcher", current_user=current_user, new_grants_list=new_grants_list)
 
 @app.route("/matching")

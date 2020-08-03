@@ -1,13 +1,13 @@
 #news_page_div{
 }
 
-#title_news{
+#title_grants{
 	padding-top: 30px;
 	font-size: 5em;
 	color: #808080;
 }
 
-.div_news{
+.div_grants{
 	color:#808080;
 	border: 0.5px solid #000;
 	margin-left: 20px;
@@ -15,9 +15,9 @@
 	padding: 30px;
 }
 
-#news_date{
+#grant_date{
 	
 }
 
-#news_title{
+#grant_title{
 }

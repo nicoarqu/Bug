@@ -27,6 +27,27 @@
       "location": "worldwide",
       "type": "rss",
       "area": "multiple"
+    },
+    {
+      "name": "Asia-Europe Foundation",
+      "url": "https://asef.org/feeds/",
+      "location": "Asia",
+      "type": "rss",
+      "area": "multiple"
+    },
+    {
+      "name": "European Comission",
+      "url": "https://ec.europa.eu/echo/echo-rss/news",
+      "location": "Europe",
+      "type": "rss",
+      "area": "multiple"
+    },
+    {
+      "name": "UNESCO",
+      "url": "https://en.unesco.org/rss.xml",
+      "location": "worldwide",
+      "type": "rss",
+      "area": "multiple"
     }
   ]
 }

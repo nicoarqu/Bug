@@ -1,4 +1,26 @@
 {
-  "palabras":[  ],
-  "palabras no queridas":[]
+  "palabras": [
+    "grants",
+    "program",
+    "recruit",
+    "apply",
+    "scholarship",
+    "internship",
+    "fellowship",
+    "grant",
+    "program",
+    "contest",
+    "workshop",
+    "fully-funded",
+    "study",
+    "lab"
+  ],
+  "palabras no queridas": [
+    "winner",
+    "winners",
+    "survey",
+    "results",
+    "document",
+    "documents"
+  ]
 }
