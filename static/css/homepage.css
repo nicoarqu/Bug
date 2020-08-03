@@ -19,7 +19,7 @@
 
 #welcome_homepage_div{
 	background-color: #303030;
-	height: 400px;
+	height: 300px;
 }
 
 #bug_title_div{
@@ -48,7 +48,6 @@
 	text-align: center;
 	padding-left: 7em;
 	padding-right: 5em;
-	padding-top: 1.5em;
 	font-size: 5em;
 	color: white;
 }
@@ -105,6 +104,15 @@
 	height: 200px;
 }
 
+#homepage_description{
+	margin-top: 70px;
+	margin-bottom: 70px;
+	height: 300px;
+	width: 70%;
+	margin-left: 200px;
+	padding-top: 100px;
+}
+
 #founder_homepage{
 	margin-top: 500px;
 	height: 600px;
@@ -116,17 +124,21 @@
 #image_founder{
 	margin-left:30%;
 	border-radius: 20%;
+	height: 260px;
+	width:260px;
 }
 
 #founder_name{
+	margin-left: -150px;
 	margin-top: 50px;
 	color:white;
-	font-size: 4em;
+	font-size: 5em;
 }
 
 #type_founder_homepage{
 	color:#A9A9A9;
 	font-size: 2.6em;
+	margin-left: -150px;
 }
 
 
