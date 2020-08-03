@@ -19,6 +19,7 @@ from datetime import datetime
 from flask_migrate import Migrate
 from flask_cors import CORS
 from flask_mail import Message, Mail
+from flask_babel import Babel, gettext
 from apscheduler.schedulers.background import BackgroundScheduler
 import load_global
 import re
@@ -124,6 +125,7 @@ scheduler.add_job(add_grants_info, "interval", seconds=600)
 scheduler.start()
 
 app = Flask(__name__)
+babel = Babel(app)
 
 mail_settings = {
     "MAIL_SERVER": 'smtp.gmail.com',
@@ -138,6 +140,10 @@ app.config.from_object(__name__)
 random.seed()
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bug_database.db'
+app.config['LANGUAGES'] = {
+    'en': 'English',
+    'es': 'Español'
+}
 Bootstrap(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -145,6 +151,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 mail = Mail(app)
+
 
 
 class Users(UserMixin, db.Model):
@@ -158,6 +165,10 @@ class Users(UserMixin, db.Model):
 """--------------------------------------------------------------------------------------------------------------------------------"""
 """-------------------------------------------------------SESSION------------------------------------------------------------------"""
 """--------------------------------------------------------------------------------------------------------------------------------"""
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'].keys())
 
 @login_manager.user_loader
 def load_user(user_id):
