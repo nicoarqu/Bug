@@ -13,45 +13,44 @@ BUG
 {% endblock %}
 
 {% block navbar %}
-<div id="main_page">
-  <nav class="navbar navbar-expand-lg">
-    <a href="/"><img src="static/images/bug_logo.jpeg" style="width:57px;height:70px;margin-top:20px;margin-left:-10px;" /></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar navbar-expand-lg">
+  <a href="/"><img src="static/images/bug_logo.jpeg" style="width:57px;height:70px;margin-top:20px;margin-left:-10px;" /></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto" id="navbar-content">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" id="navbar-content">
+      <li class="nav-item">
+        <a class="nav-link " href="/" role="button">
+          About us
+        </a>
+      </li>
+      <!--<li class="nav-item">
+        <a class="nav-link " href="/stockexchange" role="button">
+          Partners
+        </a>
+      </li>-->
+      <li class="nav-item">
+        <a class="nav-link " href="/contact_us" role="button">
+          Contact us
+        </a>
+      </li>
+      {% if not current_user %}
         <li class="nav-item">
-          <a class="nav-link " href="/" role="button">
-            About us
+          <a id="create_account_button" class="nav-link " href="/signup" role="button">
+            Join
           </a>
         </li>
-        <!--<li class="nav-item">
-          <a class="nav-link " href="/stockexchange" role="button">
-            Partners
-          </a>
-        </li>-->
-        <li class="nav-item">
-          <a class="nav-link " href="/contact_us" role="button">
-            Contact us
-          </a>
-        </li>
-        {% if not current_user %}
-          <li class="nav-item">
-            <a id="create_account_button" class="nav-link " href="/signup" role="button">
-              Join
-            </a>
-          </li>
-        {% else %}
-        {% endif %}
-      </ul>
-    </div>
-  </nav>
+      {% else %}
+      {% endif %}
+    </ul>
+  </div>
+</nav>
 {% endblock %}
 
 {% block content %}
-<div >
+<div id="grants_page">
   <br>
   <br>
   <br>
@@ -59,7 +58,7 @@ BUG
   <h1 id="title_grants" align="center">Grants</h1>
   {%for grant in new_grants_list%} 
     <div class="div_grants"> 
-      <h1 id="grant_title"><b><a href="{{grant.link}}">{{grant.titulo}}</a></b></h1> 
+      <h1><b><a id="grant_title" href="{{grant.link}}">{{grant.titulo}}</a></b></h1> 
       <p id="grant_date">{{grant.pubDate}}</p>
       <h2>{{grant.summary}}</h2>
     </div>

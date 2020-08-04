@@ -13,8 +13,9 @@
 }
 
 #logo_img{
-  height: 10px;
-  width: 10px;
+	display: flex;
+  	height: 10px;
+  	width: 10px;
 }
 
 #myCarousel{
@@ -44,7 +45,7 @@
 	width: 170px;
 	height:120px;
 	margin:auto;
-	margin-top: -20px;
+	margin-top: -1.5%;
 	font-family: Futura;
 }
 
