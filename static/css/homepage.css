@@ -9,7 +9,7 @@
 }
 
 #navbar_homepage{
-	margin-top: 20px;
+	margin-top: 15%;
 }
 
 #logo_img{
@@ -32,12 +32,12 @@
 
 .carousel-text{
 	font-size: 4.5em;
-	color: #EBF15E;
+	color: #CD9F51;
 }
 
 #welcome_homepage_div{
 	background-color: #303030;
-	height: 300px;
+	height: 750px;
 }
 
 #bug_title_div{
@@ -45,7 +45,7 @@
 	width: 170px;
 	height:120px;
 	margin:auto;
-	margin-top: -1.5%;
+	margin-top: 10%;
 	font-family: Futura;
 }
 
@@ -64,6 +64,7 @@
 }
 
 #concept_bug {
+	margin-top: 2%;
 	text-align: center;
 	padding-left: 7em;
 	padding-right: 5em;
@@ -84,7 +85,7 @@
 #title_network{
 	padding-top: 20px;
 	font-size: 5.7em;
-	color: #CA3CFF;
+	color: #676767;
 }
 
 .title_service_link{
@@ -128,7 +129,7 @@
 	margin-top: 470px;
 	margin-bottom: -400px;
 	height: 300px;
-	width: 70%;
+	width: 65%;
 	margin-left: 200px;
 	padding-top: 170px;
 	color: #676767;
