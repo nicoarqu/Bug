@@ -17,59 +17,66 @@ BUG
 
 {% block content %}
 
-<div class="jumbotron jumbotron-fluid page" id="welcome_homepage_div">
-  <div id="bug_title_div">
-    <h1 align="center" id="bug_title">BUG</h1>
-  </div>
-  <img src="static/images/bug_logo.jpeg" id="bug_title_logo" style="width:92px;height:120px;margin-top:-12em;margin-right: 38%;" />
-  <br>
-  <h2 id="concept_bug">
-    Creative Industry Network
-  </h2>
-  
-  <nav class="navbar navbar-expand-lg" id="navbar_homepage">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto" id="navbar-content">
-        <li class="nav-item">
-          <a class="nav-link nav_link_homepage"  href="/about_us" role="button">
-            About us
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav_link_homepage"  href="/contact_us" role="button">
-            Contact us
-          </a>
-        </li>
-        {% if not session['logged_in'] %}
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage"  href="/signup" role="button">
-              Sign up
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage" href="/login" role="button">
-              Log in
-            </a>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage" href="/profile" role="button">
-              Profile
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage" href="/logout" role="button">
-              Log Out
-            </a>
-          </li>
-        {% endif %}
-      </ul>
+<div class="jumbotron jumbotron-fluid" id="welcome_homepage_div">
+  <div id="bug_logo_homepage">
+    <div id="bug_title_div">
+      <h1 align="center" id="bug_title">BUG</h1>
     </div>
-  </nav>
+    <div id="bug_title_logo">
+      <img src="static/images/bug_logo.jpeg" style="width:92px;height:120px;" />
+    </div>
+  </div>
+  <br>
+  <div id="concept_bug">
+    <h2 id="concept_bug_text">
+      Creative Industry Network
+    </h2>
+  </div>
+  <div id="nav_section_homepage">
+    <nav class="navbar navbar-expand-sm" id="navbar_homepage">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto" id="navbar-content">
+          <li class="nav-item">
+            <a class="nav-link nav_link_homepage"  href="/about_us" role="button">
+              About us
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav_link_homepage"  href="/contact_us" role="button">
+              Contact us
+            </a>
+          </li>
+          {% if not session['logged_in'] %}
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage"  href="/signup" role="button">
+                Sign up
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage" href="/login" role="button">
+                Log in
+              </a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage" href="/profile" role="button">
+                Profile
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage" href="/logout" role="button">
+                Log Out
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+  </div>
 </div>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
@@ -112,15 +119,15 @@ BUG
 <div id="services_div">
   <h1 align="center" id="title_network">Services</h1>
   <div class="row">
-    <div class="col grid_item">
-      <a href="/fund_searcher" class="title_service_link"><h2 align="center" class="title_service">Global Grant Searcher</h2></a>
-      <br>
-      <p class="texto_service" align="center"> Search for grant offerings from around the world.</p>
-    </div>
-    <div class="col grid_item">
+        <div class="col grid_item">
       <a href="/matching" class="title_service_link"><h2 align="center" class="title_service">Matching</h2></a>
       <br>
       <p class="texto_service" align="center">An encounter between Traditional Industry and different areas of the Creative Industry.</p>
+    </div>
+    <div class="col grid_item">
+      <a href="/fund_searcher" class="title_service_link"><h2 align="center" class="title_service">Grants worlwide</h2></a>
+      <br>
+      <p class="texto_service" align="center"> Search for grant offerings from around the world.</p>
     </div>
     <div class="w-100"></div>
     <div class="col grid_item">

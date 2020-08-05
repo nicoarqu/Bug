@@ -5,12 +5,15 @@
 
 .nav_link_homepage{
 	color: #A594F9;
-	font-size: 1.2em;
+	font-size: 1em;
 }
 
-#navbar_homepage{
-	margin-top: 15%;
+#nav_section_homepage{
+	margin-top: 30vh;
+	width: 100vmin;
+	float:right;
 }
+
 
 #logo_img{
 	display: flex;
@@ -33,20 +36,26 @@
 .carousel-text{
 	font-size: 4.5em;
 	color: #CD9F51;
+	padding-bottom: 4%
 }
 
 #welcome_homepage_div{
 	background-color: #303030;
-	height: 750px;
+	height: 97vh;
+}
+
+#bug_logo_homepage{
+	margin-left: 40vw;
+	margin-top: 20vh;
 }
 
 #bug_title_div{
 	background: black;
 	width: 170px;
 	height:120px;
-	margin:auto;
-	margin-top: 10%;
 	font-family: Futura;
+	float:left;
+
 }
 
 #bug_title {
@@ -58,17 +67,17 @@
 }
 
 #bug_title_logo {
-	float: right;
 	display:inline-block;
-	margin:auto;
+	overflow: hidden;
 }
 
-#concept_bug {
+#concept_bug{
 	margin-top: 2%;
-	text-align: center;
-	padding-left: 7em;
-	padding-right: 5em;
-	font-size: 5em;
+	margin-left: 32vw;
+}
+
+#concept_bug_text {
+	font-size: 4em;
 	color: #EBF15E;
 }
 
