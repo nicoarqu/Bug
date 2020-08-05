@@ -102,7 +102,7 @@
 	}
 
 	.title_service{
-		font-size: 3.5em;
+		font-size: 2.7em;
 	}
 
 	.grid_item{
@@ -139,6 +139,10 @@
 		color: #676767;
 	}
 
+	.homepage_description_text{
+		font-size: 2.7rem;
+	}
+
 	#founder_homepage{
 		margin-top: 500px;
 		height: 600px;
@@ -155,12 +159,12 @@
 
 	#founder_name{
 		color:white;
-		font-size: 5em;
+		font-size: 3em;
 	}
 
 	#type_founder_homepage{
 		color:#A9A9A9;
-		font-size: 2.6em;
+		font-size: 2.2em;
 	}
 
 
@@ -340,6 +344,9 @@
 		color: #676767;
 	}
 
+	.homepage_description_text{
+			font-size: 3.5rem;
+		}
 	#founder_homepage{
 		margin-top: 500px;
 		height: 600px;

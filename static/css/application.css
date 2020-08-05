@@ -44,7 +44,6 @@
 }
 
 .navbar {
-  height: 4em;
   background-color: transparent;
   position: fixed;
   transition: top 0.3s; 
