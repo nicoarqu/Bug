@@ -1,205 +1,405 @@
-#complete_homepage{
-	background-color: #303030;
-	height: 300px;
+@media only screen and (max-width: 700px){
+	.nav_link_homepage{
+		color: #A594F9;
+		font-size: 0.7em;
+	}
+
+	#nav_section_homepage{
+		margin-top: 20vh;
+		width: 100vmin;
+		float:right;
+	}
+
+
+	#logo_img{
+		display: flex;
+	  	height: 10px;
+	  	width: 10px;
+	}
+
+	#myCarousel{
+		height:460px;
+		margin-top:-10px;
+		display:none;
+	}
+
+	.carousel-caption{
+		float:left;
+		margin-left: 550px;
+		margin-bottom: 60px;
+		width:500px;
+	}
+
+	.carousel-text{
+		font-size: 4.5em;
+		color: #CD9F51;
+		padding-bottom: 4%
+	}
+
+	#welcome_homepage_div{
+		background-color: #303030;
+		height: 97vh;
+	}
+
+	#bug_logo_homepage{
+		margin-left: 30vw;
+		margin-top: 20vh;
+	}
+
+	#bug_title_div{
+		background: black;
+		width: 170px;
+		height:120px;
+		font-family: Futura;
+		float:left;
+
+	}
+
+	#bug_title {
+		display: inline-block;
+		padding-top: 10%;
+		padding-left: 5%;
+		font-size: 7em;
+		color: white;
+	}
+
+	#bug_title_logo {
+		display:inline-block;
+		overflow: hidden;
+	}
+
+	#concept_bug{
+		margin-top: 2%;
+		margin-left: 27vw;
+	}
+
+	#concept_bug_text {
+		font-size: 4em;
+		color: #EBF15E;
+	}
+
+	#services_div{
+		background-color: #EBF15E;
+		background-size: 1700px 900px;
+		height: 720px;
+		display: block;
+		position: relative;
+		margin-bottom: -500px;
+		margin-top: -20px;
+	}
+
+	#title_network{
+		padding-top: 20px;
+		font-size: 5.5em;
+		color: #676767;
+	}
+
+	.title_service_link{
+		color: #A594F9;
+	}
+
+	.title_service_link:hover{
+		color: #A9A9A9;
+		text-decoration: none;
+	}
+
+	.title_service{
+		font-size: 4.5em;
+	}
+
+	.grid_item{
+		margin: 20px;
+		padding: 50px;
+		border: 0px solid #000;
+		border-radius: 15px;
+		height: 270px;
+		background-color: rgba(255,255,255, 0.2);
+	}
+
+	.icon_services{
+		margin: auto;
+		display: block;
+	}
+
+	.texto_service{
+		color: #676767;
+		font-size: 2em;
+	}
+
+	#foto_carousel{
+		background-color: black;
+		height: 200px;
+	}
+
+	#homepage_description{
+		margin-top: 470px;
+		margin-bottom: -400px;
+		height: 300px;
+		width: 65%;
+		margin-left: 18%;
+		padding-top: 80px;
+		color: #676767;
+	}
+
+	#founder_homepage{
+		margin-top: 500px;
+		height: 600px;
+		display:block;
+		position: relative;
+		background-color: #303030;
+	}
+
+	#image_founder{
+		border-radius: 20%;
+		height: 180px;
+		width:180px;
+	}
+
+	#founder_name{
+		color:white;
+		font-size: 5em;
+	}
+
+	#type_founder_homepage{
+		color:#A9A9A9;
+		font-size: 2.6em;
+	}
+
+
+	.text_founder_homepage{
+		margin-top: 50px;
+		margin-left: 30px;
+		color:white;
+		font-size: 2em;
+	}
+
+	#founder_wrapper{
+		padding-top: 150px;
+	}
+
+	#block_picture_founder{
+		margin-left: 35vw;
+
+	}
+
+	#block_founder_details{
+		flex: 1;
+		overflow: hidden;
+	}
+
+	#social_media_homepage{
+		float:right;
+		font-size: 5rem; 
+		margin-right:300px; 
+		margin-top: 10px;
+	}
 }
 
-.nav_link_homepage{
-	color: #A594F9;
-	font-size: 1em;
-}
+@media only screen and (min-width: 700px){
+	#complete_homepage{
+		background-color: #303030;
+		height: 300px;
+	}
 
-#nav_section_homepage{
-	margin-top: 30vh;
-	width: 100vmin;
-	float:right;
-}
+	.nav_link_homepage{
+		color: #A594F9;
+		font-size: 1em;
+	}
 
-
-#logo_img{
-	display: flex;
-  	height: 10px;
-  	width: 10px;
-}
-
-#myCarousel{
-	height:460px;
-	margin-top:-10px;
-}
-
-.carousel-caption{
-	float:left;
-	margin-left: 550px;
-	margin-bottom: 60px;
-	width:500px;
-}
-
-.carousel-text{
-	font-size: 4.5em;
-	color: #CD9F51;
-	padding-bottom: 4%
-}
-
-#welcome_homepage_div{
-	background-color: #303030;
-	height: 97vh;
-}
-
-#bug_logo_homepage{
-	margin-left: 40vw;
-	margin-top: 20vh;
-}
-
-#bug_title_div{
-	background: black;
-	width: 170px;
-	height:120px;
-	font-family: Futura;
-	float:left;
-
-}
-
-#bug_title {
-	display: inline-block;
-	padding-top: 10%;
-	padding-left: 5%;
-	font-size: 7em;
-	color: white;
-}
-
-#bug_title_logo {
-	display:inline-block;
-	overflow: hidden;
-}
-
-#concept_bug{
-	margin-top: 2%;
-	margin-left: 32vw;
-}
-
-#concept_bug_text {
-	font-size: 4em;
-	color: #EBF15E;
-}
-
-#services_div{
-	background-color: #EBF15E;
-	background-size: 1700px 900px;
-	height: 720px;
-	display: block;
-	position: relative;
-	margin-bottom: -500px;
-	margin-top: -20px;
-}
-
-#title_network{
-	padding-top: 20px;
-	font-size: 5.7em;
-	color: #676767;
-}
-
-.title_service_link{
-	color: #A594F9;
-}
-
-.title_service_link:hover{
-	color: #A9A9A9;
-	text-decoration: none;
-}
-
-.title_service{
-	font-size: 4.7em;
-}
-
-.grid_item{
-	margin: 20px;
-	padding: 50px;
-	border: 0px solid #000;
-	border-radius: 15px;
-	height: 270px;
-	background-color: rgba(255,255,255, 0.2);
-}
-
-.icon_services{
-	margin: auto;
-	display: block;
-}
-
-.texto_service{
-	color: #676767;
-	font-size: 2.5em;
-}
-
-#foto_carousel{
-	background-color: black;
-	height: 200px;
-}
-
-#homepage_description{
-	margin-top: 470px;
-	margin-bottom: -400px;
-	height: 300px;
-	width: 65%;
-	margin-left: 18%;
-	padding-top: 170px;
-	color: #676767;
-}
-
-#founder_homepage{
-	margin-top: 500px;
-	height: 600px;
-	display:block;
-	position: relative;
-	background-color: #303030;
-}
-
-#image_founder{
-	margin-left:30%;
-	border-radius: 20%;
-	height: 260px;
-	width:260px;
-}
-
-#founder_name{
-	margin-left: -150px;
-	margin-top: 50px;
-	color:white;
-	font-size: 5em;
-}
-
-#type_founder_homepage{
-	color:#A9A9A9;
-	font-size: 2.6em;
-	margin-left: -150px;
-}
+	#nav_section_homepage{
+		width: 100vmin;
+		float:right;
+		margin-top: 32vh;
+	}
 
 
-.text_founder_homepage{
-	margin-top: 50px;
-	margin-left: 30px;
-	color:white;
-	font-size: 2em;
-}
+	#logo_img{
+		display: flex;
+	  	height: 10px;
+	  	width: 10px;
+	}
 
-#founder_wrapper{
-	padding-top: 150px;
-}
+	#myCarousel{
+		height:460px;
+		margin-top:-10px;
+	}
 
-#block_picture_founder{
-	margin-left: 20%;
-	float: left;
+	.carousel-caption{
+		float:left;
+		margin-left: 550px;
+		margin-bottom: 60px;
+		width:500px;
+	}
 
-}
+	.carousel-text{
+		font-size: 4.5em;
+		color: #CD9F51;
+		padding-bottom: 4%
+	}
 
-#block_founder_details{
-	margin-left: 20px;
-	flex: 1;
-	overflow: hidden;
-}
+	#welcome_homepage_div{
+		background-color: #303030;
+		height: 97vh;
+	}
 
-#social_media_homepage{
-	float:right;
-	font-size: 5rem; 
-	margin-right:50px;	
-	margin-top:100px;
+	#bug_logo_homepage{
+		margin-left: 40vw;
+		margin-top: 20vh;
+	}
+
+	#bug_title_div{
+		background: black;
+		width: 170px;
+		height:120px;
+		font-family: Futura;
+		float:left;
+
+	}
+
+	#bug_title {
+		display: inline-block;
+		padding-top: 10%;
+		padding-left: 5%;
+		font-size: 7em;
+		color: white;
+	}
+
+	#bug_title_logo {
+		display:inline-block;
+		overflow: hidden;
+	}
+
+	#concept_bug{
+		margin-top: 2%;
+		margin-left: 32vw;
+	}
+
+	#concept_bug_text {
+		font-size: 4em;
+		color: #EBF15E;
+	}
+
+	#services_div{
+		background-color: #EBF15E;
+		background-size: 1700px 900px;
+		height: 720px;
+		display: block;
+		position: relative;
+		margin-bottom: -500px;
+		margin-top: -20px;
+	}
+
+	#title_network{
+		padding-top: 20px;
+		font-size: 5.7em;
+		color: #676767;
+	}
+
+	.title_service_link{
+		color: #A594F9;
+	}
+
+	.title_service_link:hover{
+		color: #A9A9A9;
+		text-decoration: none;
+	}
+
+	.title_service{
+		font-size: 4.7em;
+	}
+
+	.grid_item{
+		margin: 20px;
+		padding: 50px;
+		border: 0px solid #000;
+		border-radius: 15px;
+		height: 270px;
+		background-color: rgba(255,255,255, 0.2);
+	}
+
+	.icon_services{
+		margin: auto;
+		display: block;
+	}
+
+	.texto_service{
+		color: #676767;
+		font-size: 2.5em;
+	}
+
+	#foto_carousel{
+		background-color: black;
+		height: 200px;
+	}
+
+	#homepage_description{
+		margin-top: 470px;
+		margin-bottom: -400px;
+		height: 300px;
+		width: 65%;
+		margin-left: 18%;
+		padding-top: 140px;
+		color: #676767;
+	}
+
+	#founder_homepage{
+		margin-top: 500px;
+		height: 600px;
+		display:block;
+		position: relative;
+		background-color: #303030;
+	}
+
+	#image_founder{
+		margin-left:30%;
+		border-radius: 20%;
+		height: 260px;
+		width:260px;
+	}
+
+	#founder_name{
+		margin-left: 10vw;
+		margin-top: 50px;
+		color:white;
+		font-size: 5em;
+	}
+
+	#type_founder_homepage{
+		color:#A9A9A9;
+		font-size: 2.6em;
+		margin-left: 2vw;
+	}
+
+
+	.text_founder_homepage{
+		margin-top: 50px;
+		margin-left: 30px;
+		color:white;
+		font-size: 2em;
+	}
+
+	#founder_wrapper{
+		padding-top: 150px;
+	}
+
+	#block_picture_founder{
+		margin-left: 10vw;
+		float: left;
+
+	}
+
+	#block_founder_details{
+		margin-left: 10vw;
+		flex: 1;
+		overflow: hidden;
+	}
+
+	#social_media_homepage{
+		float:right;
+		font-size: 5rem; 
+		margin-right:30vw; 
+		margin-top: 10px;
+	}
+
 }
 
