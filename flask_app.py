@@ -7,7 +7,7 @@ import binascii
 from collections import OrderedDict
 from urllib.parse import urlparse
 from flask import Flask, request, render_template, redirect, url_for, Response, jsonify
-from flask import session as login_session
+from flask import session 
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, IntegerField
@@ -66,7 +66,6 @@ def key_word_exists(news_dict):
             return True
     return False
 
-
 def get_news_info():
     with open("data/info_grants.json", 'r', encoding="utf-8") as compiled_data_file:
         compiled_data_dict = json.load(compiled_data_file)
@@ -117,7 +116,6 @@ def ordenar_dates(new_news_list):
                 new_ordered_news_list.append(news_dict)
     return new_ordered_news_list
     
-
 
 scheduler = BackgroundScheduler()
 add_grants_info()
@@ -195,7 +193,7 @@ class RegisterForm(FlaskForm):
 
 @app.route("/")
 def index():
-    return render_template("homepage.html", name="homepage", current_user=current_user)
+    return render_template("homepage.html", name="homepage", session=session)
 
 @app.route("/about_us")
 def about_us():
@@ -237,8 +235,9 @@ def login():
         user = Users.query.filter_by(email=form.email.data).first()
         if user:
             if check_password_hash(user.password, form.password.data):
+                session['logged_in'] = True
                 login_user(user, remember=form.remember.data)
-                return redirect(url_for('homepage'))
+                return render_template("homepage.html", name="homepage", session=session)
         return '<h2>Invalid email or password</h2>'
     return render_template('login.html', form=form)
 
@@ -255,11 +254,13 @@ def signup():
             send_mail(form.name.data, form.email.data,"Welcome to BUG" ,"Welcome to the BUG Creative Industry Network {}".format(form.name.data))
             db.session.add(new_user)
             db.session.commit()
-            return redirect(url_for('login'))
+            login_user(new_user)
+            session['logged_in'] = True
+            return render_template("homepage.html", name="homepage", session=session)
         return '<h2>Email already registered</h2>'
         # return '<h1>' + form.email.data + ' ' + form.password.data +'</h1>'
-
     return render_template('signup.html', form=form)
+
 
 @app.route('/check/user', methods=['GET'])
 def check_credentials_user():
@@ -277,14 +278,17 @@ def check_credentials_user():
 @app.route('/logout')
 @login_required
 def logout():
+    user = Users.query.filter_by(email=current_user.email).first()
     logout_user()
-    return redirect(url_for('index'))
+    session['logged_in'] = False
+    return render_template("homepage.html", name="homepage", session=session)
 
 
 @app.route('/profile')
 @login_required
 def profile():
     return render_template('user_profile.html')
+
 
 def send_mail(recipient_name, recipient_mail, subject, body):
     with app.app_context():
