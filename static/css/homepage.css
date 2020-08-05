@@ -31,8 +31,9 @@
 
 	.carousel-text{
 		font-size: 4.5em;
-		color: #CD9F51;
+		color: #676767;
 		padding-bottom: 4%;
+		text-shadow: none;
 	}
 
 	#welcome_homepage_div{
@@ -235,8 +236,9 @@
 
 	.carousel-text{
 		font-size: 4.5em;
-		color: #CD9F51;
-		padding-bottom: 4%
+		color: #676767;
+		padding-bottom: 4%;
+		text-shadow: none;
 	}
 
 	#welcome_homepage_div{
