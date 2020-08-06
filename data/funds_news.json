@@ -48,6 +48,18 @@
       "location": "worldwide",
       "type": "rss",
       "area": "multiple"
+    },
+    {
+      "name": "BFI",
+      "url": "https://www.bfi.org.uk/latest/feed",
+      "type": "rss",
+      "area": "film"
+    },
+    {
+      "name": "BFI",
+      "url": "https://www.bfi.org.uk/latest/feed",
+      "type": "rss",
+      "area": "film"
     }
   ]
 }
