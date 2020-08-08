@@ -5,11 +5,25 @@
 	background-color: #303030;
 }
 
+#cto_about_us{
+	height: 600px;
+	display:block;
+	position: relative;
+	background-color: #a594f9;
+}
+
 #image_founder{
 	margin-left:30%;
 	border-radius: 20%;
-	height: 260px;
-	width:260px;
+	height: 380px;
+	width:320px;
+}
+
+#image_cto{
+	margin-left:30%;
+	border-radius: 20%;
+	height: 380px;
+	width:310px;
 }
 
 #founder_name{
@@ -25,6 +39,18 @@
 	margin-left: -150px;
 }
 
+#cto_name{
+	margin-left: -150px;
+	margin-top: 50px;
+	color:white;
+	font-size: 5em;
+}
+
+#type_cto_about_us{
+	color:#303030;
+	font-size: 2.6em;
+	margin-left: -150px;
+}
 
 .text_founder_about_us{
 	margin-top: 50px;

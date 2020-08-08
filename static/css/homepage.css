@@ -103,7 +103,7 @@
 	}
 
 	.title_service{
-		font-size: 2.7em;
+		font-size: 2.5em;
 	}
 
 	.grid_item{
@@ -358,10 +358,11 @@
 	}
 
 	#image_founder{
-		margin-left:30%;
+		margin-left:50%;
+		margin-top: -20px;
 		border-radius: 20%;
-		height: 260px;
-		width:260px;
+		height: 440px;
+		width:380px;
 	}
 
 	#founder_name{
