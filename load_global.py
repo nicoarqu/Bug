@@ -28,8 +28,11 @@ def load_funds_dictionaries():
     with open("data/funds_grants.json", 'r') as grants_data:
         grants_dictionary = json.load(grants_data)
     with open("data/funds_news.json", 'r') as news_data:
-        news_dictionary = json.load(news_data)
-    return grants_dictionary, news_dictionary
+        try:
+            news_dictionary = json.load(news_data)
+        except:
+            news_dictionary = {"funds": [{"name": "European Cultural Foundation", "url": "https://www.culturalfoundation.eu/news", "location": "europe", "type": "webscraping", "area": "multiple"}, {"name": "Visegradfund", "url": "https://www.visegradfund.org/feed/?post_type=new", "location": "eastern-europe", "type": "rss", "area": "multiple"}, {"name": "Nordic Culture Point", "url": "https://www.nordiskkulturkontakt.org/en/news/", "location": "Nordic Countries", "type": "webscraping", "area": "multiple"}, {"name": "IIE", "url": "https://www.iie.org/en/RSS-Feeds/RSS-Announcements", "location": "worldwide", "type": "rss", "area": "multiple"}, {"name": "Asia-Europe Foundation", "url": "https://asef.org/feeds/", "location": "Asia", "type": "rss", "area": "multiple"}, {"name": "European Comission", "url": "https://ec.europa.eu/echo/echo-rss/news", "location": "Europe", "type": "rss", "area": "multiple"}, {"name": "UNESCO", "url": "https://en.unesco.org/rss.xml", "location": "worldwide", "type": "rss", "area": "multiple"}, {"name": "BFI", "url": "https://www.bfi.org.uk/latest/feed", "type": "rss", "area": "film"}, {"name": "On-The-Move", "url": "feed://on-the-move.org/rss/news/", "type": "rss", "area": "multiple"} ] } 
+        return grants_dictionary, news_dictionary
 
 def cargar_filtros():
     """FUNCIÓN QUE RETORNA EL DICCIONARIO DE FILTROS DE Filtros_FinTech.json"""
