@@ -1,10 +1,11 @@
 #news_page_div{
+	background-color: #EBF15E;
 }
 
 #title_news{
 	padding-top: 30px;
 	font-size: 5em;
-	color: #808080;
+	color: #A594F9;
 }
 
 .div_news{
@@ -16,7 +17,8 @@
 }
 
 #news_date{
-	
+	color: #CA3CFF;
+	font-size: 2em;
 }
 
 #news_title{
