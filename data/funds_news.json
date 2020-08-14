@@ -55,6 +55,12 @@
       "type": "rss",
       "area": "film"
     },
+    {
+      "name": "On-The-Move",
+      "url": "feed://on-the-move.org/rss/news/",
+      "type": "rss",
+      "area": "multiple"
+    }
     
   ]
 }
