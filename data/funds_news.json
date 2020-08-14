@@ -52,12 +52,14 @@
     {
       "name": "BFI",
       "url": "https://www.bfi.org.uk/latest/feed",
+      "location": "worldwide",
       "type": "rss",
       "area": "film"
     },
     {
       "name": "On-The-Move",
       "url": "feed://on-the-move.org/rss/news/",
+      "location": "worldwide",
       "type": "rss",
       "area": "multiple"
     }
