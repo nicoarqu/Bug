@@ -58,7 +58,10 @@ def get_rss_content(fund_name, contenido):
     lista_diccionarios_entries = []
     for entry in contenido.entries:
         """Loop por todos los articulos de la fuente"""
-        titulo_noticia = entry.title
+        try:
+            titulo_noticia = entry.title
+        except:
+            continue
         """AQUI EL PROBLEMA"""
         cotenido = ""
         try:

@@ -55,11 +55,6 @@
       "type": "rss",
       "area": "film"
     },
-    {
-      "name": "BFI",
-      "url": "https://www.bfi.org.uk/latest/feed",
-      "type": "rss",
-      "area": "film"
-    }
+    
   ]
 }
