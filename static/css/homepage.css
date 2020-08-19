@@ -1,7 +1,8 @@
 @media only screen and (max-width: 400px) and (min-width: 200px){
 	.nav_link_homepage{
-		color: white;
-		font-size: 0.7em;
+		color: #303030;
+		font-size: 1em;
+		font-weight: bolder;
 	}
 
 	#nav_section_homepage{
@@ -37,45 +38,20 @@
 	}
 
 	#welcome_homepage_div{
-		background-color: #303030;
-		height: 70vh;
-	}
-
-	#bug_logo_homepage{
-		margin-left: 13vw;
-		margin-top: 20vh;
-	}
-
-	#bug_title_div{
-		background: black;
-		width: 170px;
-		height:120px;
-		font-family: Futura;
-		float:left;
-
-	}
-
-	#bug_title {
-		display: inline-block;
-		padding-top: 10%;
-		padding-left: 5%;
-		font-size: 7em;
-		color: white;
+		background-color: white;
+		height: 80vh;
 	}
 
 	#bug_title_logo {
-		display:inline-block;
-		overflow: hidden;
+		display: block;
+		position: absolute;
+		top:30%;
+		right:10%;	
 	}
 
-	#concept_bug{
-		margin-top: 10vh;
-		margin-left: 20vw;
-	}
-
-	#concept_bug_text {
-		font-size: 3.2em;
-		color: #EBF15E;
+	#bug_image_logo{
+		width:110%;
+		height: 110%;
 	}
 
 	#services_div{
@@ -201,8 +177,9 @@
 
 @media only screen and (max-width: 700px) and (min-width: 400px){
 	.nav_link_homepage{
-		color: white;
-		font-size: 0.7em;
+		color: #303030;
+		font-size: 1em;
+		font-weight: bolder;
 	}
 
 	#nav_section_homepage{
@@ -210,9 +187,9 @@
 		float:right;
 		display: block;
 		position: absolute;
+		display:none;
 		top: 70%;
 	}
-
 
 	#logo_img{
 		display: flex;
@@ -241,49 +218,16 @@
 	}
 
 	#welcome_homepage_div{
-		background-color: #303030;
+		background-color: white;
 		height: 97vh;
 	}
 
-	#bug_logo_homepage{
-		display: block;
-		position: absolute;
-		left: 23%;
-		top: 30%;
-	}
-
-	#bug_title_div{
-		background: black;
-		width: 170px;
-		height:120px;
-		font-family: Futura;
-		float:left;
-
-	}
-
-	#bug_title {
-		display: inline-block;
-		padding-top: 10%;
-		padding-left: 5%;
-		font-size: 7em;
-		color: white;
-	}
 
 	#bug_title_logo {
-		display:inline-block;
-		overflow: hidden;
-	}
-
-	#concept_bug{
-		left: 20%;
-		top:50%;
 		display: block;
 		position: absolute;
-	}
-
-	#concept_bug_text {
-		font-size: 4em;
-		color: #EBF15E;
+		top:20%;
+		left:10%;
 	}
 
 	#services_div{
@@ -414,14 +358,16 @@
 	}
 
 	.nav_link_homepage{
-		color: white;
+		color: #303030;
 		font-size: 1em;
+		font-weight: bolder;
 	}
+
 
 	#nav_section_homepage{
 		width: 100vmin;
-		float:right;
-		margin-top: 70%;
+		top: 70%;
+		left:15%;
 		display: block;
 		position: absolute;
 	}
@@ -454,49 +400,16 @@
 	}
 
 	#welcome_homepage_div{
-		background-color: #303030;
+		background-color: white;
 		height: 97vh;
 	}
 
-	#bug_logo_homepage{
-		left: 35%;
-		top: 20%;
-		display: block;
-		position: absolute;
-	}
-
-	#bug_title_div{
-		background: black;
-		width: 170px;
-		height:120px;
-		font-family: Futura;
-		float:left;
-
-	}
-
-	#bug_title {
-		display: inline-block;
-		padding-top: 10%;
-		padding-left: 5%;
-		font-size: 7em;
-		color: white;
-	}
 
 	#bug_title_logo {
-		display:inline-block;
-		overflow: hidden;
-	}
-
-	#concept_bug{
-		top: 50%;
-		left: 23%;
 		display: block;
 		position: absolute;
-	}
-
-	#concept_bug_text {
-		font-size: 4em;
-		color: #EBF15E;
+		top:20%;
+		left:30%;
 	}
 
 	#services_div{
@@ -633,14 +546,16 @@
 	}
 
 	.nav_link_homepage{
-		color: white;
+		color: #303030;
 		font-size: 1em;
+		font-weight: bolder;
 	}
 
 	#nav_section_homepage{
 		width: 100vmin;
 		float:right;
-		margin-top: 22vh;
+		margin-top: 70vh;
+		padding-bottom: 20px;
 	}
 
 
@@ -673,45 +588,15 @@
 	}
 
 	#welcome_homepage_div{
-		background-color: #303030;
+		background-color: white;
 		height: 97vh;
 	}
 
-	#bug_logo_homepage{
-		margin-left: 40vw;
-		margin-top: 20vh;
-	}
-
-	#bug_title_div{
-		background: black;
-		width: 170px;
-		height:120px;
-		font-family: Futura;
-		float:left;
-
-	}
-
-	#bug_title {
-		display: inline-block;
-		padding-top: 10%;
-		padding-left: 5%;
-		font-size: 7em;
-		color: white;
-	}
-
 	#bug_title_logo {
-		display:inline-block;
-		overflow: hidden;
-	}
-
-	#concept_bug{
-		margin-top: 2%;
-		margin-left: 32vw;
-	}
-
-	#concept_bug_text {
-		font-size: 4em;
-		color: #EBF15E;
+		display: block;
+		position: absolute;
+		top:20%;
+		left:35%;
 	}
 
 	#services_div{
