@@ -94,7 +94,10 @@
   text-align: center;
 }
 
-
+.body{
+    margin:0px;
+    padding:0px;
+}
 
 #logo_img{
   height:30px;
