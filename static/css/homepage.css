@@ -43,15 +43,15 @@
 	}
 
 	#bug_title_logo {
-		display: block;
-		position: absolute;
-		top:30%;
-		right:10%;	
+		margin: auto;
 	}
 
 	#bug_image_logo{
 		width:110%;
 		height: 110%;
+		margin-left: auto;
+  		margin-right: auto;
+  		display: block;
 	}
 
 	#services_div{
@@ -171,12 +171,39 @@
 	#social_media_homepage{
 		float:right;
 		font-size: 5rem; 
-		margin-right:40vw; 
+		margin-right:30vw; 
 		margin-top: 10px;
+	}
+
+	#footer_website{
+		background-color:  #303030;
+		height: 200px;
+		display: block;
+		position: absolute;
+		margin-top:70vh;
+		width:100%;
+	}
+
+	#social_media_footer{
+		display: block;
+		position: absolute;
+		left: 45%;
+		top: 8%;
+		font-size: 7rem;
+		color: ;
+	}
+
+	#rights_reserved{
+		color:white;
+		font-size: 2em;
+		display: block;
+		position: absolute;
+		top:80%;
+		left: 6%;
 	}
 }
 
-@media only screen and (max-width: 700px) and (min-width: 400px){
+@media only screen and (max-width: 800px) and (min-width: 400px){
 	.nav_link_homepage{
 		color: #303030;
 		font-size: 1em;
@@ -225,10 +252,13 @@
 
 
 	#bug_title_logo {
-		display: block;
-		position: absolute;
-		top:20%;
-		left:10%;
+		margin: auto;
+	}
+
+	#bug_image_logo{
+		margin-left: auto;
+  		margin-right: auto;
+  		display: block;
 	}
 
 	#services_div{
@@ -344,16 +374,43 @@
 		flex: 1;
 		overflow: hidden;
 	}
-
+	
 	#social_media_homepage{
 		float:right;
 		font-size: 5rem; 
-		margin-right:40vw; 
+		margin-right:30vw; 
 		margin-top: 10px;
+	}
+
+	#footer_website{
+		background-color:  #303030;
+		height: 200px;
+		display: block;
+		position: absolute;
+		margin-top: 60vh;
+		width:100%;
+	}
+
+	#social_media_footer{
+		display: block;
+		position: absolute;
+		left: 45%;
+		top: 8%;
+		font-size: 7rem;
+		color: 
+	}
+
+	#rights_reserved{
+		color:white;
+		font-size: 2em;
+		display: block;
+		position: absolute;
+		top:80%;
+		left: 6%;
 	}
 }
 
-@media only screen and (max-width: 1200px) and (min-width: 700px){
+@media only screen and (max-width: 1200px) and (min-width: 801px){
 	#complete_homepage{
 		background-color: #303030;
 		height: 300px;
@@ -361,15 +418,14 @@
 
 	.nav_link_homepage{
 		color: #303030;
-		font-size: 1em;
+		font-size: 0.8em;
 		font-weight: bolder;
 	}
 
 
 	#nav_section_homepage{
-		width: 100vmin;
-		top: 70%;
-		left:15%;
+		top: 80%;
+		left:22%;
 		display: block;
 		position: absolute;
 	}
@@ -406,12 +462,14 @@
 		height: 97vh;
 	}
 
-
 	#bug_title_logo {
-		display: block;
-		position: absolute;
-		top:20%;
-		left:30%;
+		margin: auto;
+	}
+
+	#bug_image_logo{
+		margin-left: auto;
+  		margin-right: auto;
+  		display: block;
 	}
 
 	#services_div{
@@ -542,6 +600,33 @@
 		margin-top: 10px;
 	}
 
+	#footer_website{
+		background-color:  #303030;
+		height: 200px;
+		display: block;
+		position: absolute;
+		margin-top: 80vh;
+		width:100%;
+	}
+
+	#social_media_footer{
+		display: block;
+		position: absolute;
+		left: 45%;
+		top: 8%;
+		font-size: 7rem;
+		color: 
+	}
+
+	#rights_reserved{
+		color:white;
+		font-size: 2em;
+		display: block;
+		position: absolute;
+		top:80%;
+		left: 6%;
+	}
+
 }
 @media only screen and (min-width: 1200px){
 	#complete_homepage{
@@ -556,15 +641,16 @@
 	}
 
 	#nav_section_homepage{
-		width: 100vmin;
-		float:right;
-		margin-top: 70vh;
-		padding-bottom: 20px;
+		top: 80%;
+		left:42%;
+		display: block;
+		position: absolute;
 	}
 
 	#bug_image_logo{
-		width:127%;
-		height: 127%;
+		margin-left: auto;
+  		margin-right: auto;
+  		display: block;
 	}
 
 	#logo_img{
@@ -604,10 +690,15 @@
 	}
 
 	#bug_title_logo {
-		display: block;
-		position: absolute;
-		top:20%;
-		left:28%;
+		margin: auto;
+	}
+
+	#bug_image_logo{
+		margin-left: auto;
+  		margin-right: auto;
+  		display: block;
+  		width:40%;
+		height: 40%;
 	}
 
 	#services_div{

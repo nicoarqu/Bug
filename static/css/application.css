@@ -148,3 +148,122 @@
 .rights_div{
   float: left;
 }
+
+@media only screen and (max-width: 400px) and (min-width: 200px){
+
+  #footer_website{
+    background-color:  #303030;
+    height: 200px;
+    display: block;
+    position: absolute;
+    width:100%;
+  }
+
+  #social_media_footer{
+    display: block;
+    position: absolute;
+    left: 45%;
+    top: 8%;
+    font-size: 7rem;
+    color: ;
+  }
+
+  #rights_reserved{
+    color:white;
+    font-size: 2em;
+    display: block;
+    position: absolute;
+    top:80%;
+    left: 6%;
+  }
+}
+
+@media only screen and (max-width: 800px) and (min-width: 400px){
+
+  #footer_website{
+    background-color:  #303030;
+    height: 200px;
+    display: block;
+    position: absolute;
+    width:100%;
+  }
+
+  #social_media_footer{
+    display: block;
+    position: absolute;
+    left: 45%;
+    top: 8%;
+    font-size: 7rem;
+    color: 
+  }
+
+  #rights_reserved{
+    color:white;
+    font-size: 2em;
+    display: block;
+    position: absolute;
+    top:80%;
+    left: 6%;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 801px){
+
+  #footer_website{
+    background-color:  #303030;
+    height: 200px;
+    display: block;
+    position: absolute;
+    width:100%;
+  }
+
+  #social_media_footer{
+    display: block;
+    position: absolute;
+    left: 45%;
+    top: 8%;
+    font-size: 7rem;
+    color: 
+  }
+
+  #rights_reserved{
+    color:white;
+    font-size: 2em;
+    display: block;
+    position: absolute;
+    top:80%;
+    left: 6%;
+  }
+
+}
+@media only screen and (min-width: 1200px){
+
+  #footer_website{
+    background-color:  #303030;
+    height: 200px;
+    display: block;
+    position: absolute;
+    width:100%;
+  }
+
+  #social_media_footer{
+    display: block;
+    position: absolute;
+    font-size: 7rem;
+    color: 
+  }
+
+  #rights_reserved{
+    color:white;
+    font-size: 2em;
+    display: block;
+    position: absolute;
+    top:80%;
+    left: 6%;
+  }
+
+
+}
+
+
+

@@ -24,7 +24,7 @@ BUG
         <ul class="navbar-nav ml-auto" id="navbar-content">
           <li class="nav-item">
             <a class="nav-link nav_link_homepage"  href="/about_us" role="button">
-              Sobre Nosotros
+              Nosotros
             </a>
           </li>
           {% if not session['logged_in'] %}
@@ -35,7 +35,7 @@ BUG
             </li>
             <li class="nav-item">
               <a class="nav-link nav_link_homepage" href="/login" role="button">
-                Log In
+                Ingresa
               </a>
             </li>
           {% else %}
@@ -46,7 +46,7 @@ BUG
             </li>
             <li class="nav-item">
               <a class="nav-link nav_link_homepage" href="/logout" role="button">
-                Log Out
+                Salir
               </a>
             </li>
           {% endif %}
@@ -66,6 +66,13 @@ BUG
   <br>
   <h1 align="center">Write us an email at <b>info@bug-network.com</b></h1>
   <br>
+<div id="footer_website">
+  <div id="social_media_footer">
+    <a href="https://cl.linkedin.com/company/bug-creative-industry-network?trk=public_profile_topcard_current_company" class="fa fa-linkedin fa-7x"> </a>
+    <a href="" class="fa fa-facebook fa-7x"> </a>
+  </div>  
+  <h5 id="rights_reserved">All rights reserved BUG Creative Industry Network ©</h5>
+</div>
 {% endblock %}
 
 {% block scripts %}
