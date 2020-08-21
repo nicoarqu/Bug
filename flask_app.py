@@ -24,6 +24,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 import load_global
 import re
 
+
 def write_info_grants_json(rss_grants_data_dict_list, rss_news_data_dict_list):
     compiled_data_dict = {}
     with open("data/info_grants.json", 'w', encoding="utf-8") as compiled_data_file:
@@ -190,6 +191,11 @@ class RegisterForm(FlaskForm):
     password = PasswordField('password', validators=[
                              InputRequired(), Length(min=8, max=80)])
 
+class ContactForm(FlaskForm):
+    email = StringField('Email', validators=[InputRequired(), Email(
+        message='Invalid email'), Length(max=50)])
+    text = StringField('text', validators=[
+                             InputRequired()])
 
 @app.route("/")
 def index():
@@ -212,9 +218,15 @@ def fund_searcher():
     new_grants_list = clean_events(new_grants_list)
     return render_template("fund_searcher.html", name="fund_searcher", current_user=current_user, new_grants_list=new_grants_list)
 
-@app.route("/matching")
+@app.route("/matching", methods=['GET', 'POST'])
 def matching():
-    return render_template("matching.html", name="matching", current_user=current_user)
+    form = ContactForm()
+    email = form.email.data
+    text = form.text.data
+    print(str(form))
+    if form.validate_on_submit():
+        send_mail("BUG", os.environ['EMAIL_USER'] , "Cliente quiere contactarse", text)
+    return render_template("matching.html", name="matching", current_user=current_user, form=form)
 
 @app.route("/resources")
 def resources():
@@ -288,7 +300,6 @@ def logout():
 @login_required
 def profile():
     return render_template('user_profile.html')
-
 
 def send_mail(recipient_name, recipient_mail, subject, body):
     with app.app_context():

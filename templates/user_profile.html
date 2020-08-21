@@ -13,48 +13,48 @@ BUG
 
 {% block navbar %}
 <nav class="navbar navbar-expand-lg">
-  <a href="/"><img src="static/images/bug_logo.jpeg" style="width:55px;height:70px;margin-top:20px;margin-left:-10px;" /></a>
+  <a href="/"><img src="static/images/bug_logo.png" style="width:87px;height:100px;margin-top:20px;margin-left:-10px;" /></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto" id="navbar-content">
-      <li class="nav-item">
-          <a class="nav-link nav_link_homepage"  href="/about_us" role="button">
-            About us
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav_link_homepage"  href="/contact_us" role="button">
-            Contact us
-          </a>
-        </li>
-        {% if not session['logged_in'] %}
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto" id="navbar-content">
           <li class="nav-item">
-            <a class="nav-link nav_link_homepage"  href="/signup" role="button">
-              Sign up
+            <a class="nav-link nav_link_homepage"  href="/about_us" role="button">
+              Sobre Nosotros
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav_link_homepage" href="/login" role="button">
-              Log in
+            <a class="nav-link nav_link_homepage"  href="/contact_us" role="button">
+              Contáctanos
             </a>
           </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage" href="/profile" role="button">
-              Profile
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage" href="/logout" role="button">
-              Log Out
-            </a>
-          </li>
-        {% endif %}
-    </ul>
-  </div>
+          {% if not session['logged_in'] %}
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage"  href="/signup" role="button">
+                Regístrate
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage" href="/login" role="button">
+                Log In
+              </a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage" href="/profile" role="button">
+                Perfil
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage" href="/logout" role="button">
+                Log Out
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
 </nav>
 {% endblock %}
 

@@ -2,6 +2,6 @@ export FLASK_APP=flask_app.py
 export FLASK_ENV=develop 
 export FLASK_DEBUG=1
 export SECRET_KEY=moni2412
-export EMAIL_USER=info@bug-network.com
-export EMAIL_PASSWORD=moni2412
+export EMAIL_USER=monicaseguelsteuer@gmail.com
+export EMAIL_PASSWORD=circular8
 flask run

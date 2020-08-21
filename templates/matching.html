@@ -1,4 +1,5 @@
 {% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}
 BUG
@@ -13,69 +14,67 @@ BUG
 {% endblock %}
 
 {% block navbar %}
-<div id="main_page">
+<div>
   <nav class="navbar navbar-expand-lg">
-    <a href="/"><img src="static/images/bug_logo.jpeg" style="width:57px;height:70px;margin-top:20px;margin-left:-10px;" /></a>
+    <a href="/"><img src="static/images/bug_logo.png" style="width:87px;height:100px;margin-top:20px;margin-left:-10px;" /></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto" id="navbar-content">
-        <li class="nav-item">
-          <a class="nav-link nav_link_homepage"  href="/about_us" role="button">
-            About us
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav_link_homepage"  href="/contact_us" role="button">
-            Contact us
-          </a>
-        </li>
-        {% if not session['logged_in'] %}
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto" id="navbar-content">
           <li class="nav-item">
-            <a class="nav-link nav_link_homepage"  href="/signup" role="button">
-              Sign up
+            <a class="nav-link nav_link_homepage"  href="/about_us" role="button">
+              Sobre Nosotros
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav_link_homepage" href="/login" role="button">
-              Log in
+            <a class="nav-link nav_link_homepage"  href="/contact_us" role="button">
+              Contáctanos
             </a>
           </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage" href="/profile" role="button">
-              Profile
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage" href="/logout" role="button">
-              Log Out
-            </a>
-          </li>
-        {% endif %}
-      </ul>
-    </div>
+          {% if not session['logged_in'] %}
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage"  href="/signup" role="button">
+                Regístrate
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage" href="/login" role="button">
+                Log In
+              </a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage" href="/profile" role="button">
+                Perfil
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage" href="/logout" role="button">
+                Log Out
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
   </nav>
+</div>
 {% endblock %}
 
 {% block content %}
-<div >
-  <br>
-  <br>
-  <br>
-  <br>
-  <h1 align="center">Sorry this page is under development</h1>
-  <svg width="5em" height="5em" class="hammer_icon" viewBox="0 0 16 16" class="bi bi-hammer" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9.812 1.952a.5.5 0 0 1-.312.89c-1.671 0-2.852.596-3.616 1.185L4.857 5.073V6.21a.5.5 0 0 1-.146.354L3.425 7.853a.5.5 0 0 1-.708 0L.146 5.274a.5.5 0 0 1 0-.706l1.286-1.29a.5.5 0 0 1 .354-.146H2.84C4.505 1.228 6.216.862 7.557 1.04a5.009 5.009 0 0 1 2.077.782l.178.129z"/>
-    <path fill-rule="evenodd" d="M6.012 3.5a.5.5 0 0 1 .359.165l9.146 8.646A.5.5 0 0 1 15.5 13L14 14.5a.5.5 0 0 1-.756-.056L4.598 5.297a.5.5 0 0 1 .048-.65l1-1a.5.5 0 0 1 .366-.147z"/>
-  </svg>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+<div id="matching_description">
+  <h1 align="center" class="matching_description_text"><b>Nuestro objetivo es revitalizar la escena cultural al estrechar la union entre la Industria Tradicional y la Industria Creativa. </b></h1>
+</div>
+<div class="container">
+  <form class="form-contact" method="GET">
+    <h2>Escríbenos</h2>
+      {{ form.hidden_tag() }}
+      {{ wtf.form_field(form.email) }}
+      {{ wtf.form_field(form.text) }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/signup">Or sign up</a>
+  </form>
 </div>
 {% endblock %}
 

@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
 
-#: templates/homepage.html:66
+#: templates/matching.html:70
 msgid "\"Our aim is to revitilize the cultural scene by enabling the"
 msgstr "\"Nuestro objetivo es revitalizar la escena cultural al permitir"
 
-#: templates/homepage.html:67
+#: templates/matching.html:71
 msgid "link between Tradidional Industry and the Creative Industry.\""
 msgstr "la union entre la Industria Tradicional y la Industria Creativa.\""
 

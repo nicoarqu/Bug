@@ -2,7 +2,9 @@
   font-family: Avenir, sans serif, Times, serif;
 }
 
-
+.active{
+    color: #fff !important;
+}
 
 .sidenav {
   height: 100%;
@@ -20,7 +22,7 @@
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 3em;
-  color: #150F58;
+  color: #65655E;
   display: block;
 }
 
@@ -55,7 +57,8 @@
 }
 
 .nav-link{
-  color: #A594F9;
+  color: #65655E;
+  font-weight: bold;
 }
 
 .nav-link:hover {

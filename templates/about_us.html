@@ -15,60 +15,49 @@ BUG
 {% block navbar %}
 <div id="main_page">
   <nav class="navbar navbar-expand-lg">
-    <a href="/"><img src="static/images/bug_logo.jpeg" style="width:57px;height:70px;margin-top:20px;margin-left:-10px;" /></a>
+    <a href="/"><img src="static/images/bug_logo.png" style="width:87px;height:100px;margin-top:20px;margin-left:-10px;" /></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto" id="navbar-content">
-       <li class="nav-item">
-          <a class="nav-link nav_link_homepage"  href="/about_us" role="button">
-            About us
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav_link_homepage"  href="/contact_us" role="button">
-            Contact us
-          </a>
-        </li>
-        {% if not session['logged_in'] %}
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto" id="navbar-content">
           <li class="nav-item">
-            <a class="nav-link nav_link_homepage"  href="/signup" role="button">
-              Sign up
+            <a class="nav-link nav_link_homepage"  href="/contact_us" role="button">
+              Contáctanos
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage" href="/login" role="button">
-              Log in
-            </a>
-          </li>
-        {% else %}
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage" href="/profile" role="button">
-              Profile
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage" href="/logout" role="button">
-              Log Out
-            </a>
-          </li>
-        {% endif %}
-      </ul>
-    </div>
+          {% if not session['logged_in'] %}
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage"  href="/signup" role="button">
+                Regístrate
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage" href="/login" role="button">
+                Log In
+              </a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage" href="/profile" role="button">
+                Perfil
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav_link_homepage" href="/logout" role="button">
+                Log Out
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
   </nav>
 {% endblock %}
 
 {% block content %}
 <div>
-  <br>
-  <br>
-  <br>
-  <br>
-  <h1 align="center" style="font-size: 5rem;">Our Team</h1>
-  <br>
-  <br>
+  <h1 align="center" style="font-size: 5rem;">Nosotros</h1>
   <div id="founder_about_us">
     <div id="founder_wrapper">
       <div id="block_picture_founder">
@@ -76,7 +65,7 @@ BUG
       </div>
       <div id="block_founder_details">
         <h1 id="founder_name" align="center">Mónica Seguel</h1>
-        <h3 id="type_founder_about_us" align="center"><b>Founder and CEO</b></h3>
+        <h3 id="type_founder_about_us" align="center"><b>Fundadora y CEO</b></h3>
       </div>
     </div>
     <div id="social_media_about_us" style="font-size: 5rem; margin-right:470px; margin-top: 10px;">
@@ -88,11 +77,11 @@ BUG
   <div id="cto_about_us">
     <div id="founder_wrapper">
       <div id="block_picture_founder">
-        <img src="static/images/cto_img.jpeg"  id="image_cto" align="center" alt="Avatar"/>
+        <img src="static/images/cto_img.png"   id="image_cto" align="center" alt="Avatar"/>
       </div>
       <div id="block_founder_details">
         <h1 id="cto_name" align="center">Matías Mingo</h1>
-        <h3 id="type_cto_about_us" align="center"><b>Co-Founder and CTO</b></h3>
+        <h3 id="type_cto_about_us" align="center"><b>Co-Fundador y CTO</b></h3>
       </div>
     </div>
     <div id="social_media_about_us" style="font-size: 5rem; margin-right:470px; margin-top: 10px;">

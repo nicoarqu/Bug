@@ -18,6 +18,13 @@ BUG
 {% block content %}
 
 <div class="jumbotron jumbotron-fluid" id="welcome_homepage_div">
+  <div id="lang_selector_div">
+    <a>
+      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-globe" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M1.018 7.5h2.49c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5zM2.255 4H4.09a9.266 9.266 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.024 7.024 0 0 0 2.255 4zM8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm-.5 1.077c-.67.204-1.335.82-1.887 1.855-.173.324-.33.682-.468 1.068H7.5V1.077zM7.5 5H4.847a12.5 12.5 0 0 0-.338 2.5H7.5V5zm1 2.5V5h2.653c.187.765.306 1.608.338 2.5H8.5zm-1 1H4.51a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm1 2.5V8.5h2.99a12.495 12.495 0 0 1-.337 2.5H8.5zm-1 1H5.145c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12zm-2.173 2.472a6.695 6.695 0 0 1-.597-.933A9.267 9.267 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM1.674 11H3.82a13.651 13.651 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm8.999 3.472A7.024 7.024 0 0 0 13.745 12h-1.834a9.278 9.278 0 0 1-.641 1.539 6.688 6.688 0 0 1-.597.933zM10.855 12H8.5v2.923c.67-.204 1.335-.82 1.887-1.855A7.98 7.98 0 0 0 10.855 12zm1.325-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm.312-3.5h2.49a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.91 4a9.277 9.277 0 0 0-.64-1.539 6.692 6.692 0 0 0-.597-.933A7.024 7.024 0 0 1 13.745 4h-1.834zm-1.055 0H8.5V1.077c.67.204 1.335.82 1.887 1.855.173.324.33.682.468 1.068z"/>
+      </svg>
+  </a>
+  </div>
   <div id="bug_title_logo">
     <img id="bug_image_logo" src="static/images/homepage_logo.png" />
   </div>
@@ -32,29 +39,29 @@ BUG
         <ul class="navbar-nav ml-auto" id="navbar-content">
           <li class="nav-item">
             <a class="nav-link nav_link_homepage"  href="/about_us" role="button">
-              About us
+              Sobre Nosotros
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link nav_link_homepage"  href="/contact_us" role="button">
-              Contact us
+              Contáctanos
             </a>
           </li>
           {% if not session['logged_in'] %}
             <li class="nav-item">
               <a class="nav-link nav_link_homepage"  href="/signup" role="button">
-                Sign up
+                Regístrate
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link nav_link_homepage" href="/login" role="button">
-                Log in
+                Log In
               </a>
             </li>
           {% else %}
             <li class="nav-item">
               <a class="nav-link nav_link_homepage" href="/profile" role="button">
-                Profile
+                Perfil
               </a>
             </li>
             <li class="nav-item">
@@ -78,21 +85,21 @@ BUG
     <div class="item active">
       <img src="static/images/background1.jpg" alt="Chania" style="width:700px;height:500px;">
       <div class="carousel-caption">
-        <h1 class ="carousel-text">We create bridges between creators and funding.</h1>
+        <h1 class ="carousel-text">Una red global para las industrias creativas.</h1>
       </div>
     </div>
 
     <div class="item">
       <img src="static/images/background2.jpg" alt="Chicago" style="width:720px;height:500px;">
       <div class="carousel-caption">
-        <h1 class ="carousel-text">Let your creative protential run free.</h1>
+        <h1 class ="carousel-text">Creamos puentes entre financiadores y creadores.</h1>
       </div>
     </div>
 
     <div class="item">
       <img src="static/images/background3.jpg" alt="New York" style="width:700px;height:500px;">
       <div class="carousel-caption">
-        <h1 class ="carousel-text">If you have a project in mind we want to be a part of it.</h1>
+        <h1 class ="carousel-text">Si tienes algún proyecto en mente te queremos ayudar.</h1>
       </div>
     </div>
   </div> 
@@ -106,54 +113,40 @@ BUG
   </a>
 </div>
 <div id="services_div">
-  <h1 align="center" id="title_network">Services</h1>
+  <h1 align="center" id="title_network">Servicios</h1>
   <div class="row">
         <div class="col grid_item">
       <a href="/matching" class="title_service_link"><h2 align="center" class="title_service">Matching</h2></a>
       <br>
-      <p class="texto_service" align="center">An encounter between Traditional Industry and different areas of the Creative Industry.</p>
+      <p class="texto_service" align="center">Un encuentro entre la Industria Tradicional y diferentes areas de la Industria Creativa.</p>
     </div>
     <div class="col grid_item">
-      <a href="/fund_searcher" class="title_service_link"><h2 align="center" class="title_service">Grants Worldwide</h2></a>
+      <a href="/fund_searcher" class="title_service_link"><h2 align="center" class="title_service">Buscador de Subsidios</h2></a>
       <br>
-      <p class="texto_service" align="center"> Search for grant offerings from around the world.</p>
+      <p class="texto_service" align="center">Busca y enterate de subsidios, programas, becas entre otros, al rededor del mundo.</p>
     </div>
     <div class="w-100"></div>
     <div class="col grid_item">
-      <a href="/events" class="title_service_link"><h2 align="center" class="title_service">News</h2></a>
+      <a href="/events" class="title_service_link"><h2 align="center" class="title_service">Noticias</h2></a>
       <br>
-      <p class="texto_service" align="center">Check the latest news in culture.</p>
+      <p class="texto_service" align="center">Enterate de las ultimas noticias sobre cultura.</p>
     </div>
     <div class="col grid_item">
-      <a href="/resources" class="title_service_link"><h2 align="center" class="title_service">Resources</h2></a>
+      <a href="/resources" class="title_service_link"><h2 align="center" class="title_service">Recursos</h2></a>
       <br>
-      <p class="texto_service" align="center">Check the multiple resources that we offer about cultural content.</p>
+      <p class="texto_service" align="center">Mira nuestros recursos y contenidos sobre cultura.</p>
     </div>
   </div>
 </div>
 <div id="homepage_description">
-  <h1 align="center" class="homepage_description_text"><b>{{ gettext('Our aim is to revitalize the cultural scene by enabling the') }}</b></h1>
-  <h1 align="center" class="homepage_description_text"><b>{{ gettext('link between the Traditional Industry and the Creative Industry.') }}</b></h1>
+  <h1 align="center" class="homepage_description_text"><b>Queremos dinamizar el Ecosistema de las industrias creativas creando puentes inesperados como también permitir el acceso a información vital para su desarrollo </b></h1>
 </div>
-<div id="founder_homepage">
-  <div id="founder_wrapper">
-    <div id="block_picture_founder">
-      <img src="static/images/founder_img.png"  id="image_founder" align="center" alt="Avatar"/>
-    </div>
-    <div id="block_founder_details">
-      <h1 id="founder_name" align="center">Mónica Seguel</h1>
-      <h3 id="type_founder_homepage" align="center"><b>Founder and CEO</b></h3>
-    </div>
-  </div>
-  <div id="social_media_homepage" style="font-size: 5rem;">
-    <a href="https://cl.linkedin.com/in/m%C3%B3nica-seguel-73b1a198" class="fa fa-linkedin fa-7x"> </a>
-    <a href="mailto:monicaseguel@bug-network.com" > <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
-</svg></a>
-  </div>
-</div>
-<div>
-  <h5>All rights reserved BUG Creative Industry Network</h5>
+<div id="footer_website">
+  <div id="social_media_footer">
+    <a href="https://cl.linkedin.com/company/bug-creative-industry-network?trk=public_profile_topcard_current_company" class="fa fa-linkedin fa-7x"> </a>
+    <a href="" class="fa fa-facebook fa-7x"> </a>
+  </div>  
+  <h5 id="rights_reserved">All rights reserved BUG Creative Industry Network ©</h5>
 </div>
 
 {% endblock %}
