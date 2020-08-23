@@ -1,9 +1,6 @@
 *{
-  font-family: Avenir, sans serif, Times, serif;
-}
-
-.active{
-    color: #fff !important;
+  font-family: Futura, Arial, Times, serif;
+  color: #150F58 ; 
 }
 
 .sidenav {
@@ -12,7 +9,7 @@
   position: fixed;
   z-index: 1;
   top: 0;
-  right: 0;
+  left: 0;
   background-color: transparent;
   overflow-x: hidden;
   padding-top: 16em;
@@ -22,7 +19,7 @@
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 3em;
-  color: #65655E;
+  color: #150F58;
   display: block;
 }
 
@@ -33,10 +30,11 @@
 .main {
   margin-left: 260px; /* Same as the width of the sidenav */
   font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
 }
 
 .navbar-brand {
-	font-size: 5em !important;
+  font-size: 5em !important;
   color: white;
 }
 
@@ -46,6 +44,7 @@
 }
 
 .navbar {
+  height: 4em;
   background-color: transparent;
   position: fixed;
   transition: top 0.3s; 
@@ -57,12 +56,11 @@
 }
 
 .nav-link{
-  color: #65655E;
-  font-weight: bold;
+  color: white;
 }
 
 .nav-link:hover {
-  color:  #a594f9;
+  color: #150F58;
 }
 
 #navbar-content{
@@ -73,13 +71,16 @@
 
 .li { 
   display: inline;
-	color: green; 
+  color: green; 
 }
 
 .jumbotron {
   background-color: transparent;
 }
 
+#eg{
+  background-color: blue;
+}
 
 .grid-container {
   display: grid;
@@ -97,9 +98,11 @@
   text-align: center;
 }
 
-.body{
-    margin:0px;
-    padding:0px;
+#main_page{
+  background-color: #3AABB5;
+  height: 1000px;
+  overflow: auto;
+  flex-flow: row wrap;
 }
 
 #logo_img{
@@ -139,131 +142,4 @@
   background-color: #fff;
   border: 1px solid #ddd;
 }
-
-.hammer_icon{
-  margin-top: 20px;
-  margin-left: 48%;
-}
-
-.rights_div{
-  float: left;
-}
-
-@media only screen and (max-width: 400px) and (min-width: 200px){
-
-  #footer_website{
-    background-color:  #303030;
-    height: 200px;
-    display: block;
-    position: absolute;
-    width:100%;
-  }
-
-  #social_media_footer{
-    display: block;
-    position: absolute;
-    left: 45%;
-    top: 8%;
-    font-size: 7rem;
-    color: ;
-  }
-
-  #rights_reserved{
-    color:white;
-    font-size: 2em;
-    display: block;
-    position: absolute;
-    top:80%;
-    left: 6%;
-  }
-}
-
-@media only screen and (max-width: 800px) and (min-width: 400px){
-
-  #footer_website{
-    background-color:  #303030;
-    height: 200px;
-    display: block;
-    position: absolute;
-    width:100%;
-  }
-
-  #social_media_footer{
-    display: block;
-    position: absolute;
-    left: 45%;
-    top: 8%;
-    font-size: 7rem;
-    color: 
-  }
-
-  #rights_reserved{
-    color:white;
-    font-size: 2em;
-    display: block;
-    position: absolute;
-    top:80%;
-    left: 6%;
-  }
-}
-
-@media only screen and (max-width: 1200px) and (min-width: 801px){
-
-  #footer_website{
-    background-color:  #303030;
-    height: 200px;
-    display: block;
-    position: absolute;
-    width:100%;
-  }
-
-  #social_media_footer{
-    display: block;
-    position: absolute;
-    left: 45%;
-    top: 8%;
-    font-size: 7rem;
-    color: 
-  }
-
-  #rights_reserved{
-    color:white;
-    font-size: 2em;
-    display: block;
-    position: absolute;
-    top:80%;
-    left: 6%;
-  }
-
-}
-@media only screen and (min-width: 1200px){
-
-  #footer_website{
-    background-color:  #303030;
-    height: 200px;
-    display: block;
-    position: absolute;
-    width:100%;
-  }
-
-  #social_media_footer{
-    display: block;
-    position: absolute;
-    font-size: 7rem;
-    color: 
-  }
-
-  #rights_reserved{
-    color:white;
-    font-size: 2em;
-    display: block;
-    position: absolute;
-    top:80%;
-    left: 6%;
-  }
-
-
-}
-
-
 
