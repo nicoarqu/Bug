@@ -153,12 +153,12 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 mail = Mail(app)
 
-def send_mail(recipient_mail, subject, body):
+def send_mail(recipient_mail, subject, html):
     with app.app_context():
         msg = Message(subject="{}".format(subject),
                       sender=app.config.get("MAIL_USERNAME"),
                       recipients=[recipient_mail], # replace with your email for testing
-                      body="{}".format(body))
+                      html=html)
         mail.send(msg)
 
 class Users(UserMixin, db.Model):
