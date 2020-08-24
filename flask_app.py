@@ -219,7 +219,7 @@ def contact_us():
     text = form.text.data
     content_html= "<br><p>{}</p><br><p>{}</p>".format(text, email)
     if form.validate_on_submit():
-        send_mail("info@bug-network.com" , "Cliente quiere contactarse", content_html)
+        send_mail(app.config.get("MAIL_USERNAME"), "Cliente quiere contactarse", content_html)
     return render_template("contact_us.html", name="contact_us", current_user=current_user, form=form)
 
 @app.route("/fund_searcher")
@@ -238,7 +238,7 @@ def matching():
     text = form.text.data
     content_html= "<br><p>{}</p><br><p>{}</p>".format(text, email)
     if form.validate_on_submit():
-        send_mail("info@bug-network.com" , "Cliente quiere contactarse", content_html)
+        send_mail(app.config.get("MAIL_USERNAME"), "Cliente quiere contactarse", content_html)
     return render_template("matching.html", name="matching", current_user=current_user, form=form)
 
 @app.route("/resources")
