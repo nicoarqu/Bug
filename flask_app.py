@@ -28,7 +28,7 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
 def send_mail(recipient_mail, subject, body):
-    content_html += "<br><p>{}</p><br><p>{}</p>".format(body, recipient_mail)
+    content_html= "<br><p>{}</p><br><p>{}</p>".format(body, recipient_mail)
     message = Mail(
     from_email=os.environ['EMAIL_USER'],
     to_emails=os.environ['EMAIL_USER'],
