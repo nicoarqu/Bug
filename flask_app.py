@@ -27,23 +27,21 @@ import re
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
+
 def send_mail(recipient_mail, subject, body):
     content_html= "<br><p>{}</p><br><p>{}</p>".format(body, recipient_mail)
-    message = Mail(
-    from_email=os.environ['EMAIL_USER'],
+    message = Mail(from_email=os.environ['EMAIL_USER'],
     to_emails=os.environ['EMAIL_USER'],
     subject='{}'.format(subject),
     html_content=content_html)
     try:
         sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
         response = sg.send(message)
-        print(response.status_code) 
+        print(response.status_code)
         print(response.body)
         print(response.headers)
     except Exception as e:
         print(e.message)
-
-
 
 def write_info_grants_json(rss_grants_data_dict_list, rss_news_data_dict_list):
     compiled_data_dict = {}
@@ -225,7 +223,7 @@ def index():
 def about_us():
     return render_template("about_us.html", name="about_us", current_user=current_user)
 
-@app.route("/contact_us")
+@app.route("/contact_us", methods=['GET', 'POST'])
 def contact_us():
     form = ContactForm()
     email = form.email.data
@@ -248,7 +246,6 @@ def matching():
     form = ContactForm()
     email = form.email.data
     text = form.text.data
-    print(str(form))
     if form.validate_on_submit():
         send_mail(email , "Cliente quiere contactarse", text)
     return render_template("matching.html", name="matching", current_user=current_user, form=form)

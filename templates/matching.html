@@ -62,13 +62,13 @@ BUG
   </nav>
 </div>
 {% endblock %}
-
+ 
 {% block content %}
 <div id="matching_description">
   <h1 align="center" class="matching_description_text"><b>Nuestro objetivo es revitalizar la escena cultural al estrechar la unión entre la Industria Tradicional y la Industria Creativa. </b></h1>
 </div>
 <div class="container" id="div_contact_form">
-  <form class="form-contact" method="POST">
+  <form class="form-contact" method="POST" action="/matching">
     <h2 id="escribenos_titulo">Escríbenos</h2>
       {{ form.hidden_tag() }}
       {{ wtf.form_field(form.email) }}
