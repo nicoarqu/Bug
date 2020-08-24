@@ -19,30 +19,12 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from datetime import datetime
 from flask_migrate import Migrate
 from flask_cors import CORS
+from flask_mail import Message, Mail
 from flask_babel import Babel, gettext
 from apscheduler.schedulers.background import BackgroundScheduler
 import load_global
 import re
-from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail
 
-
-def send_mail(recipient_mail, subject, body):
-    content_html= "<br><p>{}</p><br><p>{}</p>".format(body,recipient_mail)
-    print(content_html)
-    message = Mail(
-    from_email='info@bug-network.com',
-    to_emails='info@bug-network.com',
-    subject='Nuevo mensaje de usuario {}'.format(datetime.now().date()),
-    html_content=content_html)
-    try:
-        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-        response = sg.send(message)
-        print(response.status_code)
-        print(response.body)
-        print(response.headers)
-    except Exception as e:
-        print(e.message)
 
 def write_info_grants_json(rss_grants_data_dict_list, rss_news_data_dict_list):
     compiled_data_dict = {}
@@ -144,6 +126,16 @@ scheduler.start()
 
 app = Flask(__name__)
 babel = Babel(app)
+
+mail_settings = {
+    "MAIL_SERVER": 'smtp.gmail.com',
+    "MAIL_PORT": 465,
+    "MAIL_USE_TLS": False,
+    "MAIL_USE_SSL": True,
+    "MAIL_USERNAME": os.environ['EMAIL_USER'],
+    "MAIL_PASSWORD": os.environ['EMAIL_PASSWORD']
+}
+app.config.update(mail_settings)
 app.config.from_object(__name__)
 random.seed()
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
@@ -159,6 +151,15 @@ migrate = Migrate(app, db)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+mail = Mail(app)
+
+def send_mail(recipient_mail, subject, body):
+    with app.app_context():
+        msg = Message(subject="{}".format(subject),
+                      sender=app.config.get("MAIL_USERNAME"),
+                      recipients=[recipient_mail], # replace with your email for testing
+                      body="{}".format(body))
+        mail.send(msg)
 
 class Users(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -211,13 +212,14 @@ def index():
 def about_us():
     return render_template("about_us.html", name="about_us", current_user=current_user)
 
-@app.route("/contact_us", methods=['GET', 'POST'])
+@app.route("/contact_us")
 def contact_us():
     form = ContactForm()
     email = form.email.data
     text = form.text.data
+    content_html= "<br><p>{}</p><br><p>{}</p>".format(text, email)
     if form.validate_on_submit():
-        send_mail(email , "Cliente quiere contactarse", text)
+        send_mail("info@bug-network.com" , "Cliente quiere contactarse", content_html)
     return render_template("contact_us.html", name="contact_us", current_user=current_user, form=form)
 
 @app.route("/fund_searcher")
@@ -234,8 +236,9 @@ def matching():
     form = ContactForm()
     email = form.email.data
     text = form.text.data
+    content_html= "<br><p>{}</p><br><p>{}</p>".format(text, email)
     if form.validate_on_submit():
-        send_mail(email , "Cliente quiere contactarse", text)
+        send_mail("info@bug-network.com" , "Cliente quiere contactarse", content_html)
     return render_template("matching.html", name="matching", current_user=current_user, form=form)
 
 @app.route("/resources")
@@ -273,7 +276,7 @@ def signup():
             hashed_password = generate_password_hash(
                 form.password.data, method='sha256')
             new_user = Users(email=form.email.data, password=hashed_password, name=form.name.data, nationality=form.nationality.data)
-            send_mail(form.name.data, form.email.data,"Welcome to BUG" ,"Welcome to the BUG Creative Industry Network {}".format(form.name.data))
+            send_mail(form.email.data,"Welcome to BUG" ,"Welcome to the BUG Creative Industry Network {}".format(form.name.data))
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
