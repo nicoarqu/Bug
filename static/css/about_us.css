@@ -16,8 +16,6 @@
 	#image_founder{
 		margin-left:5vw;
 		border-radius: 20%;
-		height: 380px;
-		width:350px;
 	}
 
 	#image_cto{
@@ -264,6 +262,12 @@
 		background-color: #303030;
 	}
 
+	.details_founders{
+		font-size: 2.5em;
+		color: #D6D84F;
+		margin-left: 10%;
+	}
+
 	#cto_about_us{
 		height: 600px;
 		display:block;
@@ -274,8 +278,8 @@
 	#image_founder{
 		margin-left:5vw;
 		border-radius: 20%;
-		height: 380px;
-		width:350px;
+		height:55%;
+		width:55%;
 	}
 
 	#image_cto{
@@ -319,7 +323,7 @@
 	}
 
 	#founder_wrapper{
-		padding-top: 150px;
+		padding-top: 5%;
 	}
 
 	#block_picture_founder{
