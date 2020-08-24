@@ -24,6 +24,25 @@ from flask_babel import Babel, gettext
 from apscheduler.schedulers.background import BackgroundScheduler
 import load_global
 import re
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+
+def send_mail(recipient_mail, subject, body):
+    content_html += "<br><p>{}</p><br><p>{}</p>".format(body, recipient_mail)
+    message = Mail(
+    from_email=os.environ['EMAIL_USER'],
+    to_emails=os.environ['EMAIL_USER'],
+    subject='{}'.format(subject),
+    html_content=content_html)
+    try:
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        response = sg.send(message)
+        print(response.status_code) 
+        print(response.body)
+        print(response.headers)
+    except Exception as e:
+        print(e.message)
+
 
 
 def write_info_grants_json(rss_grants_data_dict_list, rss_news_data_dict_list):
@@ -212,7 +231,7 @@ def contact_us():
     email = form.email.data
     text = form.text.data
     if form.validate_on_submit():
-        send_mail("BUG", os.environ['EMAIL_USER'] , "Cliente quiere contactarse", text)
+        send_mail(email , "Cliente quiere contactarse", text)
     return render_template("contact_us.html", name="contact_us", current_user=current_user, form=form)
 
 @app.route("/fund_searcher")
@@ -231,7 +250,7 @@ def matching():
     text = form.text.data
     print(str(form))
     if form.validate_on_submit():
-        send_mail("BUG", os.environ['EMAIL_USER'] , "Cliente quiere contactarse", text)
+        send_mail(email , "Cliente quiere contactarse", text)
     return render_template("matching.html", name="matching", current_user=current_user, form=form)
 
 @app.route("/resources")
@@ -306,14 +325,6 @@ def logout():
 @login_required
 def profile():
     return render_template('user_profile.html')
-
-def send_mail(recipient_name, recipient_mail, subject, body):
-    with app.app_context():
-        msg = Message(subject="{}".format(subject),
-                      sender=app.config.get("MAIL_USERNAME"),
-                      recipients=[recipient_mail], # replace with your email for testing
-                      body="{}".format(body))
-        mail.send(msg)
 
 
 if __name__ == "__main__":
