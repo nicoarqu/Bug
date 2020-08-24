@@ -44,6 +44,7 @@
 
 	#bug_title_logo {
 		margin: auto;
+		margin-right: 9%;
 	}
 
 	#bug_image_logo{
@@ -51,17 +52,18 @@
 		height: 110%;
 		margin-left: auto;
   		margin-right: auto;
+  		margin-bottom: 20px;
   		display: block;
 	}
 
 	#services_div{
 		background-color: #EBF15E;
-		background-size: 1700px 900px;
 		height: 720px;
+		width: 100%;
 		display: block;
-		position: relative;
 		margin-bottom: -500px;
 		margin-top: -20px;
+		padding-right: -20px;
 	}
 
 	#title_network{
@@ -84,7 +86,7 @@
 	}
 
 	.grid_item{
-		margin: 20px;
+		margin: 10px;
 		padding: 50px;
 		border: 0px solid #000;
 		border-radius: 15px;
@@ -99,7 +101,7 @@
 
 	.texto_service{
 		color: #676767;
-		font-size: 1.5em;
+		font-size: 1.3em;
 	}
 
 	#foto_carousel{
@@ -109,7 +111,7 @@
 
 	#homepage_description{
 		margin-top: 470px;
-		margin-bottom: -400px;
+		margin-bottom: -380px;
 		height: 300px;
 		width: 65%;
 		margin-left: 18%;
@@ -118,7 +120,7 @@
 	}
 
 	.homepage_description_text{
-		font-size: 2.7rem;
+		font-size: 2rem;
 		font-weight: bolder;
 	}
 
@@ -187,7 +189,7 @@
 	#social_media_footer{
 		display: block;
 		position: absolute;
-		left: 45%;
+		left: 32%;
 		top: 8%;
 		font-size: 7rem;
 		color: ;
@@ -198,7 +200,7 @@
 		font-size: 2em;
 		display: block;
 		position: absolute;
-		top:80%;
+		top:72%;
 		left: 6%;
 	}
 }
