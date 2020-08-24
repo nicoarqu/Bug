@@ -11,3 +11,12 @@
 	font-weight: bolder;
 	color: white;
 	}
+
+#div_contact_form{
+	height:500px;
+	padding:20vh;
+}
+
+#escribenos_titulo{
+	font-size: 4em;
+}

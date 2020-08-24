@@ -12,6 +12,7 @@ from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, IntegerField
 from wtforms.validators import InputRequired, Email, Length
+from wtforms.widgets import TextArea
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
@@ -192,10 +193,10 @@ class RegisterForm(FlaskForm):
                              InputRequired(), Length(min=8, max=80)])
 
 class ContactForm(FlaskForm):
-    email = StringField('Email', validators=[InputRequired(), Email(
+    email = StringField('Correo Electrónico', validators=[InputRequired(), Email(
         message='Invalid email'), Length(max=50)])
-    text = StringField('text', validators=[
-                             InputRequired()])
+    text = StringField('Mensaje', validators=[
+                             InputRequired()],widget=TextArea())
 
 @app.route("/")
 def index():
@@ -207,7 +208,12 @@ def about_us():
 
 @app.route("/contact_us")
 def contact_us():
-    return render_template("contact_us.html", name="contact_us", current_user=current_user)
+    form = ContactForm()
+    email = form.email.data
+    text = form.text.data
+    if form.validate_on_submit():
+        send_mail("BUG", os.environ['EMAIL_USER'] , "Cliente quiere contactarse", text)
+    return render_template("contact_us.html", name="contact_us", current_user=current_user, form=form)
 
 @app.route("/fund_searcher")
 def fund_searcher():

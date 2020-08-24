@@ -67,14 +67,13 @@ BUG
 <div id="matching_description">
   <h1 align="center" class="matching_description_text"><b>Nuestro objetivo es revitalizar la escena cultural al estrechar la unión entre la Industria Tradicional y la Industria Creativa. </b></h1>
 </div>
-<div class="container">
+<div class="container" id="div_contact_form">
   <form class="form-contact" method="GET">
-    <h2>Escríbenos</h2>
+    <h2 id="escribenos_titulo">Escríbenos</h2>
       {{ form.hidden_tag() }}
       {{ wtf.form_field(form.email) }}
       {{ wtf.form_field(form.text) }}
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <a href="/signup">Or sign up</a>
+    <button type="submit" class="btn btn-primary">Enviar</button>
   </form>
 </div>
 <div id="footer_website">
