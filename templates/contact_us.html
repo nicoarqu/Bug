@@ -60,7 +60,7 @@ BUG
 {% block content %}  
   <br>
   <div class="container" id="div_contact_form">
-  <form class="form-contact" method="POST">
+  <form class="form-contact" method="POST" action="/contact_us">
     <h2 id="escribenos_titulo">Escríbenos</h2>
       {{ form.hidden_tag() }}
       {{ wtf.form_field(form.email) }}
