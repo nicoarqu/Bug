@@ -144,7 +144,6 @@ scheduler.start()
 
 app = Flask(__name__)
 babel = Babel(app)
-app.config.update(mail_settings)
 app.config.from_object(__name__)
 random.seed()
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
