@@ -19,7 +19,6 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from datetime import datetime
 from flask_migrate import Migrate
 from flask_cors import CORS
-from flask_mail import Message, Mail
 from flask_babel import Babel, gettext
 from apscheduler.schedulers.background import BackgroundScheduler
 import load_global
@@ -29,10 +28,12 @@ from sendgrid.helpers.mail import Mail
 
 
 def send_mail(recipient_mail, subject, body):
-    content_html= "<br><p>{}</p><br><p>{}</p>".format(body, recipient_mail)
-    message = Mail(from_email=os.environ['EMAIL_USER'],
-    to_emails=os.environ['EMAIL_USER'],
-    subject='{}'.format(subject),
+    content_html= "<br><p>{}</p><br><p>{}</p>".format(body,recipient_mail)
+    print(content_html)
+    message = Mail(
+    from_email='info@bug-network.com',
+    to_emails='info@bug-network.com',
+    subject='Nuevo mensaje de usuario {}'.format(datetime.now().date()),
     html_content=content_html)
     try:
         sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
@@ -143,15 +144,6 @@ scheduler.start()
 
 app = Flask(__name__)
 babel = Babel(app)
-
-mail_settings = {
-    "MAIL_SERVER": 'smtp.gmail.com',
-    "MAIL_PORT": 465,
-    "MAIL_USE_TLS": False,
-    "MAIL_USE_SSL": True,
-    "MAIL_USERNAME": os.environ['EMAIL_USER'],
-    "MAIL_PASSWORD": os.environ['EMAIL_PASSWORD']
-}
 app.config.update(mail_settings)
 app.config.from_object(__name__)
 random.seed()
@@ -168,9 +160,6 @@ migrate = Migrate(app, db)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
-mail = Mail(app)
-
-
 
 class Users(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
