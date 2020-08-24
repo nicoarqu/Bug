@@ -255,12 +255,14 @@
 
 	#bug_title_logo {
 		margin: auto;
+		padding-right: 7%;
 	}
 
 	#bug_image_logo{
 		margin-left: auto;
   		margin-right: auto;
   		display: block;
+  		margin-right: 7%;
 	}
 
 	#services_div{
@@ -327,7 +329,7 @@
 	}
 
 	.homepage_description_text{
-		font-size: 2.7rem;
+		font-size: 2.4rem;
 		font-weight: bolder;
 	}
 
@@ -396,7 +398,7 @@
 	#social_media_footer{
 		display: block;
 		position: absolute;
-		left: 45%;
+		left: 36%;
 		top: 8%;
 		font-size: 7rem;
 		color: 
@@ -407,15 +409,15 @@
 		font-size: 2em;
 		display: block;
 		position: absolute;
-		top:80%;
+		top:70%;
 		left: 6%;
 	}
 }
 
 @media only screen and (max-width: 1200px) and (min-width: 801px){
 	#complete_homepage{
-		background-color: #303030;
-		height: 300px;
+		background-color: white;
+		height: 95vh;
 	}
 
 	.nav_link_homepage{
@@ -633,7 +635,7 @@
 @media only screen and (min-width: 1200px){
 	#complete_homepage{
 		background-color: white;
-		height: 300px;
+		height: 95vh;
 	}
 
 	.nav_link_homepage{

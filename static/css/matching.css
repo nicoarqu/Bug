@@ -50,19 +50,29 @@
 	}
 
 	.matching_description_text{
-		padding-top: 24vh;
-		font-size: 5.4rem;
+		padding-top: 20vh;
+		font-size: 3.6rem;
 		font-weight: bolder;
 		color: white;
 		}
 
 	#div_contact_form{
 		height:500px;
-		padding:20vh;
+		padding:10vh;
+		margin-bottom: -20%;
 	}
 
 	#escribenos_titulo{
 		font-size: 4em;
+	}
+
+	#rights_reserved{
+		color:white;
+		font-size: 2em;
+		display: block;
+		position: absolute;
+		top:60%;
+		left: 6%;
 	}
 
 }
