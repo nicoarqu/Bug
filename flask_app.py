@@ -212,7 +212,7 @@ def index():
 def about_us():
     return render_template("about_us.html", name="about_us", current_user=current_user)
 
-@app.route("/contact_us")
+@app.route("/contact_us", methods=['GET', 'POST'])
 def contact_us():
     form = ContactForm()
     email = form.email.data
