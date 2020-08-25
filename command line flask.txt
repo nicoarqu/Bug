@@ -1,8 +1,0 @@
-export FLASK_APP=flask_app.py
-export FLASK_ENV=develop 
-export FLASK_DEBUG=1
-export SECRET_KEY=moni2412
-export EMAIL_USER=info@bug-network.com
-export EMAIL_PASSWORD=moni2412
-export SENDGRID_API_KEY=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
-flask run
