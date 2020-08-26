@@ -183,18 +183,18 @@ def load_user(user_id):
 
 
 class LoginForm(FlaskForm):
-    email = StringField('email', validators=[InputRequired(), Email(
-        message='Invalid email'), Length(max=50)])
-    password = PasswordField('password', validators=[
-                             InputRequired(), Length(min=8, max=80)])
-    remember = BooleanField('remember me')
-
-class RegisterForm(FlaskForm):
-    name = StringField('Full name', validators=[InputRequired(), Length(max=50)])
     email = StringField('Email', validators=[InputRequired(), Email(
         message='Invalid email'), Length(max=50)])
-    nationality = StringField('Nationality', validators=[InputRequired(), Length(max=50)])
-    password = PasswordField('password', validators=[
+    password = PasswordField('Clave', validators=[
+                             InputRequired(), Length(min=8, max=80)])
+    remember = BooleanField('Recuérdame')
+
+class RegisterForm(FlaskForm):
+    name = StringField('Nombre', validators=[InputRequired(), Length(max=50)])
+    email = StringField('Email', validators=[InputRequired(), Email(
+        message='Invalid email'), Length(max=50)])
+    nationality = StringField('Nacionalidad', validators=[InputRequired(), Length(max=50)])
+    password = PasswordField('Clave', validators=[
                              InputRequired(), Length(min=8, max=80)])
 
 class ContactForm(FlaskForm):

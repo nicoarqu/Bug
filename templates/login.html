@@ -9,7 +9,7 @@ BUG
 {{super()}}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/application.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/resources.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 {% endblock %}
@@ -44,14 +44,14 @@ BUG
 
 {% block content %}
 <div class="container">
-	<form class="form-signin" method="POST" action="/login">
-		<h2>Please log in</h2>
+	<form id="form_login" method="POST" action="/login">
+		<h2 id="title_login">Ingresa a tu cuenta BUG</h2>
 	    {{ form.hidden_tag() }}
 	    {{ wtf.form_field(form.email) }}
 	    {{ wtf.form_field(form.password) }}
 	    {{ wtf.form_field(form.remember) }}
-	  <button type="submit" class="btn btn-primary">Submit</button>
-    <a href="/signup">Or sign up</a>
+	  <button type="submit" class="btn btn-primary">Entra</button>
+    <a href="/signup">O regístrate</a>
 	</form>
 </div>
 <div id="footer_website">
