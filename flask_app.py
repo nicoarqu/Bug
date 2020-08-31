@@ -4,6 +4,12 @@ import os
 import time
 import sys
 import binascii
+import nltk
+import random
+nltk.download('punkt')
+from nltk.corpus import stopwords
+nltk.download('stopwords')
+from nltk.tokenize import word_tokenize
 from collections import OrderedDict
 from urllib.parse import urlparse
 from flask import Flask, request, render_template, redirect, url_for, Response, jsonify
@@ -203,6 +209,9 @@ class ContactForm(FlaskForm):
     text = StringField('Mensaje', validators=[
                              InputRequired()],widget=TextArea())
 
+class SearchForm(FlaskForm):
+    text = StringField('Search', validators=[InputRequired(), Length(max=100)])
+
 @app.route("/")
 def index():
     return render_template("homepage.html", name="homepage", session=session)
@@ -221,13 +230,44 @@ def contact_us():
         send_mail(app.config.get("MAIL_USERNAME"), "Cliente quiere contactarse", content_html)
     return render_template("contact_us.html", name="contact_us", current_user=current_user, form=form)
 
-@app.route("/fund_searcher")
-def fund_searcher():
+def get_important_words(description):
+    text_tokens = word_tokenize(description)
+    tokens_without_sw = [word.lower() for word in text_tokens if not word in stopwords.words()]
+    return tokens_without_sw
+
+def get_search_matches(text):
+    clean_text = get_important_words(text)
     new_grants_list = get_news_info()
     new_grants_list = filter_grants(new_grants_list)
     new_grants_list.sort(key=lambda item:item['pubDate'], reverse=True)
     new_grants_list = ordenar_dates(new_grants_list)
     new_grants_list = clean_events(new_grants_list)
+    list_posible_grants = list()
+    num_matching_repositories = 0
+    for grant in new_grants_list:
+        dict_posible_grant = {"title": grant["titulo"], "num": 0}
+        for word in clean_text:
+            if word in get_important_words(str(grant["titulo"]+grant["summary"])):
+                dict_posible_grant['num']+= 1
+                continue
+        if dict_posible_grant["num"] > 0:
+            list_posible_grants.append(dict_posible_grant)
+    return list_posible_grants
+
+@app.route("/fund_searcher", methods=['GET', 'POST'])
+def fund_searcher():
+    form = SearchForm()
+    top_list = list()
+    new_grants_list = get_news_info()
+    new_grants_list = filter_grants(new_grants_list)
+    new_grants_list.sort(key=lambda item:item['pubDate'], reverse=True)
+    new_grants_list = ordenar_dates(new_grants_list)
+    new_grants_list = clean_events(new_grants_list)
+    if form.validate_on_submit(): 
+        text = form.text.data
+        list_posible_grants = get_search_matches(text)
+        top_list = sorted(list_posible_grants, key=lambda k: k['num'], reverse=True)
+        return render_template("fund_searcher.html", name="fund_searcher", current_user=current_user, new_grants_list=top_list)
     return render_template("fund_searcher.html", name="fund_searcher", current_user=current_user, new_grants_list=new_grants_list)
 
 @app.route("/matching", methods=['GET', 'POST'])
