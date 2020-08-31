@@ -267,8 +267,8 @@ def fund_searcher():
         text = form.text.data
         list_posible_grants = get_search_matches(text)
         top_list = sorted(list_posible_grants, key=lambda k: k['num'], reverse=True)
-        return render_template("fund_searcher.html", name="fund_searcher", current_user=current_user, new_grants_list=top_list)
-    return render_template("fund_searcher.html", name="fund_searcher", current_user=current_user, new_grants_list=new_grants_list)
+        return render_template("fund_searcher.html", name="fund_searcher", current_user=current_user, new_grants_list=top_list, form=form)
+    return render_template("fund_searcher.html", name="fund_searcher", current_user=current_user, new_grants_list=new_grants_list, form=form)
 
 @app.route("/matching", methods=['GET', 'POST'])
 def matching():
