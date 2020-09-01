@@ -64,7 +64,6 @@ def key_word_exists(news_dict):
     text = news_dict["summary"] + " " + news_dict["titulo"] 
     regex = re.compile('[^a-zA-Z]')
     text = regex.sub(' ', text)
-    print(text)
     text_words = text.lower().split(" ")
     for non_key_word in non_key_words:
         if non_key_word in text_words:
@@ -116,7 +115,6 @@ def ordenar_dates(new_news_list):
         for month in year_dict.keys():
             if year_dict[month]:
                 year_dict[month] = sorted(year_dict[month], key = lambda i: i['pubDate'].split(" ")[1], reverse=True)
-                print(year_dict[month])
     new_ordered_news_list = []
     for year_key in ordered_list_dict.keys():
         for month_key in ordered_list_dict[year_key].keys():
@@ -174,6 +172,12 @@ class Users(UserMixin, db.Model):
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(80))
 
+class News(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    nationality = db.Column(db.String(50))
+    email = db.Column(db.String(50), unique=True)
+    password = db.Column(db.String(80))
 
 """--------------------------------------------------------------------------------------------------------------------------------"""
 """-------------------------------------------------------SESSION------------------------------------------------------------------"""
@@ -210,7 +214,7 @@ class ContactForm(FlaskForm):
                              InputRequired()],widget=TextArea())
 
 class SearchForm(FlaskForm):
-    text = StringField('Search', validators=[InputRequired(), Length(max=100)])
+    text = StringField('', validators=[InputRequired(), Length(max=100)])
 
 @app.route("/")
 def index():
@@ -235,20 +239,15 @@ def get_important_words(description):
     tokens_without_sw = [word.lower() for word in text_tokens if not word in stopwords.words()]
     return tokens_without_sw
 
-def get_search_matches(text):
+def get_search_matches(text, new_grants_list):
     clean_text = get_important_words(text)
-    new_grants_list = get_news_info()
-    new_grants_list = filter_grants(new_grants_list)
-    new_grants_list.sort(key=lambda item:item['pubDate'], reverse=True)
-    new_grants_list = ordenar_dates(new_grants_list)
-    new_grants_list = clean_events(new_grants_list)
     list_posible_grants = list()
-    num_matching_repositories = 0
     for grant in new_grants_list:
-        dict_posible_grant = {"title": grant["titulo"], "num": 0}
+        dict_posible_grant = {"titulo": grant["titulo"], "num": 0, "pubDate": grant["pubDate"], "summary": grant["summary"], "link": grant["link"]}
+        important_words = get_important_words(str(grant["titulo"].lower()+" "+grant["summary"].lower()))
         for word in clean_text:
-            if word in get_important_words(str(grant["titulo"]+grant["summary"])):
-                dict_posible_grant['num']+= 1
+            if word in important_words:
+                dict_posible_grant['num'] += 1
                 continue
         if dict_posible_grant["num"] > 0:
             list_posible_grants.append(dict_posible_grant)
@@ -265,7 +264,7 @@ def fund_searcher():
     new_grants_list = clean_events(new_grants_list)
     if form.validate_on_submit(): 
         text = form.text.data
-        list_posible_grants = get_search_matches(text)
+        list_posible_grants = get_search_matches(text, new_grants_list)
         top_list = sorted(list_posible_grants, key=lambda k: k['num'], reverse=True)
         return render_template("fund_searcher.html", name="fund_searcher", current_user=current_user, new_grants_list=top_list, form=form)
     return render_template("fund_searcher.html", name="fund_searcher", current_user=current_user, new_grants_list=new_grants_list, form=form)

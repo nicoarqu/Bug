@@ -69,7 +69,7 @@ BUG
   <br>
   <h1 id="title_grants" align="center">Subsidios</h1>
   <div id="search_bar" class="lg-form mt-0">
-    <form  method="POST" action="/fund_searcher">
+    <form  id="form_search" method="POST" action="/fund_searcher">
       {{ form.hidden_tag() }}
       {{ wtf.form_field(form.text) }}
       <button type="submit" class="btn btn-primary">Submit</button>

@@ -2,6 +2,14 @@
 	background-color: #A594F9;
 }
 
+#search_bar{
+	margin-bottom: -40vh;
+}
+
+#form_search{
+	width: 60%;
+}
+
 #title_grants{
 	padding-top: 30px;
 	padding-bottom: 30px;
