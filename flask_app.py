@@ -78,10 +78,6 @@ def get_news_info():
         compiled_data_dict = json.load(compiled_data_file)
     return compiled_data_dict["news"]
 
-def add_grants_info():
-    rss_grants_data_dict_list, rss_news_data_dict_list = load_global.load_all()
-    write_info_grants_json(rss_grants_data_dict_list, rss_news_data_dict_list)
-
 def clean_events(events_list):
     title_list = []
     clean_events_list = []
@@ -97,9 +93,9 @@ def clean_events(events_list):
     return clean_events_list
 
 def cleanhtml(raw_html):
-  cleanr = re.compile('<.*?>')
-  cleantext = re.sub(cleanr, '', raw_html)
-  return cleantext
+    cleanr = re.compile('<.*?>')
+    cleantext = re.sub(cleanr, '', raw_html)
+    return cleantext
 
 def ordenar_dates(new_news_list):
     ordered_list_dict = {"2020": {"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}, "2019":{"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}, "2018":{"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}}
@@ -123,10 +119,7 @@ def ordenar_dates(new_news_list):
     return new_ordered_news_list
     
 
-scheduler = BackgroundScheduler()
-add_grants_info()
-scheduler.add_job(add_grants_info, "interval", seconds=600)
-scheduler.start()
+
 
 app = Flask(__name__)
 babel = Babel(app)
@@ -157,6 +150,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 mail = Mail(app)
 
+
 def send_mail(recipient_mail, subject, html):
     with app.app_context():
         msg = Message(subject="{}".format(subject),
@@ -174,11 +168,24 @@ class Users(UserMixin, db.Model):
 
 class News(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    nationality = db.Column(db.String(50))
-    email = db.Column(db.String(50), unique=True)
-    password = db.Column(db.String(80))
+    title = db.Column(db.String(100))
+    description = db.Column(db.String(1000))
+    link = db.Column(db.String(1000))
+    datetime = db.Column(db.String(50))
 
+def add_grants_info():
+    rss_grants_data_dict_list, rss_news_data_dict_list = load_global.load_all()
+    db.session.query(News).delete()
+    db.session.commit()
+    for news_dict in rss_news_data_dict_list:
+        new_news = News(title=news_dict['titulo'], description=news_dict['summary'], link=news_dict['link'], datetime=news_dict['pubDate'])
+        db.session.add(new_news)
+    db.session.commit()
+
+scheduler = BackgroundScheduler()
+add_grants_info()
+scheduler.add_job(add_grants_info, "interval", seconds=600)
+scheduler.start()
 """--------------------------------------------------------------------------------------------------------------------------------"""
 """-------------------------------------------------------SESSION------------------------------------------------------------------"""
 """--------------------------------------------------------------------------------------------------------------------------------"""
@@ -257,7 +264,10 @@ def get_search_matches(text, new_grants_list):
 def fund_searcher():
     form = SearchForm()
     top_list = list()
-    new_grants_list = get_news_info()
+    news = News.query.all()
+    new_grants_list = []
+    for n in news:
+        new_grants_list.append({"titulo": n.title, "link":n.link ,"summary":n.description, "pubDate":n.datetime})
     new_grants_list = filter_grants(new_grants_list)
     new_grants_list.sort(key=lambda item:item['pubDate'], reverse=True)
     new_grants_list = ordenar_dates(new_grants_list)
@@ -285,7 +295,10 @@ def resources():
 
 @app.route("/events")
 def events():
-    new_news_list = get_news_info()
+    new_news_list = list()
+    news = News.query.all()
+    for n in news:
+        new_news_list.append({"titulo": n.title, "link":n.link ,"summary":n.description, "pubDate":n.datetime})
     new_news_list.sort(key=lambda item:item['pubDate'], reverse=True)
     new_news_list = ordenar_dates(new_news_list)
     new_news_list = clean_events(new_news_list)
