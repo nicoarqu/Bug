@@ -6,6 +6,7 @@ import sys
 import binascii
 import nltk
 import random
+import datetime
 nltk.download('punkt')
 from nltk.corpus import stopwords
 nltk.download('stopwords')
@@ -28,6 +29,7 @@ from flask_cors import CORS
 from flask_mail import Message, Mail
 from flask_babel import Babel, gettext
 from apscheduler.schedulers.background import BackgroundScheduler
+from webscraping_scripts import get_scraped_news
 import load_global
 import re
 
@@ -175,11 +177,19 @@ class News(db.Model):
 
 def add_grants_info():
     rss_grants_data_dict_list, rss_news_data_dict_list = load_global.load_all()
-    db.session.query(News).delete()
-    db.session.commit()
     for news_dict in rss_news_data_dict_list:
+        if News.query.filter_by(link=news_dict['link']).first():
+            continue
         new_news = News(title=news_dict['titulo'], description=news_dict['summary'], link=news_dict['link'], datetime=news_dict['pubDate'])
         db.session.add(new_news)
+    scraped_news_list = get_scraped_news()
+    for n_dict in scraped_news_list:
+        if n_dict != None:
+            for title, data_dict in n_dict.items():
+                if News.query.filter_by(link=data_dict['href']).first():
+                    continue
+                new_news = News(title=title, description='', link=data_dict['href'], datetime=datetime.datetime.now())
+                db.session.add(new_news)
     db.session.commit()
 
 scheduler = BackgroundScheduler()
