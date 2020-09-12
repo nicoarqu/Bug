@@ -6,7 +6,6 @@ import sys
 import binascii
 import nltk
 import random
-import datetime
 nltk.download('punkt')
 from nltk.corpus import stopwords
 nltk.download('stopwords')
@@ -188,7 +187,7 @@ def add_grants_info():
             for title, data_dict in n_dict.items():
                 if News.query.filter_by(link=data_dict['href']).first():
                     continue
-                new_news = News(title=title, description='', link=data_dict['href'], datetime=str(datetime.datetime.now()))
+                new_news = News(title=title, description='', link=data_dict['href'], datetime=str(datetime.now()))
                 db.session.add(new_news)
     db.session.commit()
 

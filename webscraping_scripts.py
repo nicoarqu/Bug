@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import re
+import datetime
 
 
 def obtain_content(url):
@@ -74,6 +75,22 @@ def obtain_news_eeagrants():
             url = "https://eeagrants.org{}".format(node['href'])
             dict_news[title] = {'href': url }
         index += 1
+
+def obtain_grants_creativeeurope():
+    url = "https://ec.europa.eu/programmes/creative-europe/calls_en"
+    regex = re.compile("[^a-zA-Z0-9 -]")
+    try:
+        page_response = requests.get(url, timeout=5)
+        soup = BeautifulSoup(page_response.content, "html.parser")
+        textContent = ""
+        dict_news = {}
+        dates = []
+        for node in soup.findAll("div", {"class": "update-highlight--list--content"}):
+            title = regex.sub(' ',str(node.findAll(text=True)))
+            print(title)
+        return dict_news
+    except:
+        return{}
 
 def get_scraped_news():
     news_list = []
