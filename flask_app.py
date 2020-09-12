@@ -188,6 +188,8 @@ def add_grants_info():
                 if News.query.filter_by(link=data_dict['href']).first():
                     continue
                 date = "  {} {} {}".format(datetime.now().day, datetime.now().month, datetime.now().year)
+                print(title)
+                print(date)
                 new_news = News(title=title, description='', link=data_dict['href'], datetime=date)
                 db.session.add(new_news)
     db.session.commit()
