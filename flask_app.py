@@ -102,6 +102,7 @@ def ordenar_dates(new_news_list):
     ordered_list_dict = {"2020": {"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}, "2019":{"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}, "2018":{"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}}
     for news_dict in new_news_list:
         date_elements = news_dict["pubDate"].split(" ")
+        try:
         day = date_elements[1]
         month = date_elements[2]
         year = date_elements[3]
@@ -187,7 +188,8 @@ def add_grants_info():
             for title, data_dict in n_dict.items():
                 if News.query.filter_by(link=data_dict['href']).first():
                     continue
-                new_news = News(title=title, description='', link=data_dict['href'], datetime=str(datetime.now()))
+                date = "  {} {} {}".format(datetime.now().day, datetime.now().month, datetime.now().year)
+                new_news = News(title=title, description='', link=data_dict['href'], datetime=date)
                 db.session.add(new_news)
     db.session.commit()
 

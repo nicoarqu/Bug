@@ -87,7 +87,11 @@ def obtain_grants_creativeeurope():
         dates = []
         for node in soup.findAll("div", {"class": "update-highlight--list--content"}):
             title = regex.sub(' ',str(node.findAll(text=True)))
-            print(title)
+            title_list = title.split(" ")
+            title_list = [x for x in title_list if x != 'n']
+            title = ' '.join(title_list)
+            title_list = title.split("        ")
+            title = title_list[0][]
         return dict_news
     except:
         return{}
