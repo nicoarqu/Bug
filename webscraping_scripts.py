@@ -82,6 +82,7 @@ def obtain_grants_creativeeurope():
     try:
         page_response = requests.get(url, timeout=5)
         soup = BeautifulSoup(page_response.content, "html.parser")
+        print(soup)
         textContent = ""
         dict_news = {}
         dates = []
@@ -91,7 +92,9 @@ def obtain_grants_creativeeurope():
             title_list = [x for x in title_list if x != 'n']
             title = ' '.join(title_list)
             title_list = title.split("        ")
-            title = title_list[0][]
+            title = title_list[0][6:]
+            status
+            print(title)
         return dict_news
     except:
         return{}
@@ -102,3 +105,4 @@ def get_scraped_news():
     news_list.append(obtain_news_nordiskkulturkontakt())
     news_list.append(obtain_news_culturalfoundation())
     return news_list
+
