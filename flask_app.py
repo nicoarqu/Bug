@@ -187,7 +187,7 @@ def add_grants_info():
             for title, data_dict in n_dict.items():
                 if News.query.filter_by(link=data_dict['href']).first():
                     continue
-                date = "  {} {} {}".format(datetime.now().day, datetime.now().month, datetime.now().year)
+                date = "  {} {} {}".format(datetime.now().day, datetime.now().strftime("%b"), datetime.now().year)
                 print(title)
                 print(date)
                 new_news = News(title=title, description='', link=data_dict['href'], datetime=date)
