@@ -192,7 +192,9 @@ def add_grants_info():
     for n_dict in scraped_news_list:
         if n_dict != None:
             for title, data_dict in n_dict.items():
-                if News.query.filter_by(link=data_dict['href']).first():
+                news_exists = News.query.filter_by(link=data_dict['href']).first()
+                db.session.commit()
+                if news_exists:
                     continue
                 date = "  {} {} {}".format(datetime.now().day, datetime.now().strftime("%b"), datetime.now().year)
                 new_news = News(title=title, description='', link=data_dict['href'], datetime=date)
@@ -284,6 +286,7 @@ def fund_searcher():
     news = News.query.all()
     new_grants_list = []
     for n in news:
+        print(n.title)
         new_grants_list.append({"titulo": n.title, "link":n.link ,"summary":n.description, "pubDate":n.datetime})
     new_grants_list = filter_grants(new_grants_list)
     new_grants_list.sort(key=lambda item:item['pubDate'], reverse=True)
