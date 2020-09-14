@@ -339,7 +339,7 @@ def signup():
             hashed_password = generate_password_hash(
                 form.password.data, method='sha256')
             new_user = Users(email=form.email.data, password=hashed_password, name=form.name.data, nationality=form.nationality.data)
-            send_mail(form.email.data,"Welcome to BUG" ,"Welcome to the BUG Creative Industry Network {}".format(form.name.data))
+            send_mail(form.email.data,"Bienvenido/a a BUG" ,"Te damos la bienvenida a BUG Creative Industry Network {}".format(form.name.data))
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
