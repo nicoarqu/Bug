@@ -279,6 +279,7 @@ def fund_searcher():
     news = News.query.all()
     new_grants_list = []
     for n in news:
+        print(n)
         new_grants_list.append({"titulo": n.title, "link":n.link ,"summary":n.description, "pubDate":n.datetime})
     new_grants_list = filter_grants(new_grants_list)
     new_grants_list.sort(key=lambda item:item['pubDate'], reverse=True)
