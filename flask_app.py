@@ -52,7 +52,7 @@ def get_grants_info():
 def filter_grants(news_list):
     grants_list = []
     for news_dict in news_list:
-        if news_dict != None:
+        if news_dict == None:
             continue
         if key_word_exists(news_dict):
             grants_list.append(news_dict)
@@ -286,7 +286,6 @@ def fund_searcher():
     news = News.query.all()
     new_grants_list = []
     for n in news:
-        print(n.title)
         new_grants_list.append({"titulo": n.title, "link":n.link ,"summary":n.description, "pubDate":n.datetime})
     new_grants_list = filter_grants(new_grants_list)
     new_grants_list.sort(key=lambda item:item['pubDate'], reverse=True)
