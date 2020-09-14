@@ -52,9 +52,8 @@ def get_grants_info():
 def filter_grants(news_list):
     grants_list = []
     for news_dict in news_list:
-        if news_dict != None:
-            if key_word_exists(news_dict):
-                grants_list.append(news_dict)
+        if key_word_exists(news_dict):
+            grants_list.append(news_dict)
     return grants_list
 
 def key_word_exists(news_dict):
