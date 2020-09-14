@@ -58,22 +58,22 @@ def filter_grants(news_list):
     return grants_list
 
 def key_word_exists(news_dict):
-    if news_dict not Nonw
-    key_words = []
-    with open("data/filtering_words.json", "r") as key_words_file:
-        file_dict = json.load(key_words_file)
-        key_words = file_dict["palabras"]
-        non_key_words = file_dict["palabras no queridas"]
-    text = news_dict["summary"] + " " + news_dict["titulo"] 
-    regex = re.compile('[^a-zA-Z]')
-    text = regex.sub(' ', text)
-    text_words = text.lower().split(" ")
-    for non_key_word in non_key_words:
-        if non_key_word in text_words:
-            return False
-    for key_word in key_words:
-        if key_word in text_words:
-            return True
+    if news_dict != None:
+        key_words = []
+        with open("data/filtering_words.json", "r") as key_words_file:
+            file_dict = json.load(key_words_file)
+            key_words = file_dict["palabras"]
+            non_key_words = file_dict["palabras no queridas"]
+        text = news_dict["summary"] + " " + news_dict["titulo"] 
+        regex = re.compile('[^a-zA-Z]')
+        text = regex.sub(' ', text)
+        text_words = text.lower().split(" ")
+        for non_key_word in non_key_words:
+            if non_key_word in text_words:
+                return False
+        for key_word in key_words:
+            if key_word in text_words:
+                return True
     return False
 
 def get_news_info():
