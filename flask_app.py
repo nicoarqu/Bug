@@ -52,11 +52,13 @@ def get_grants_info():
 def filter_grants(news_list):
     grants_list = []
     for news_dict in news_list:
-        if key_word_exists(news_dict):
-            grants_list.append(news_dict)
+        if news_dict != None:
+            if key_word_exists(news_dict):
+                grants_list.append(news_dict)
     return grants_list
 
 def key_word_exists(news_dict):
+    if news_dict not Nonw
     key_words = []
     with open("data/filtering_words.json", "r") as key_words_file:
         file_dict = json.load(key_words_file)
