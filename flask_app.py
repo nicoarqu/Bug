@@ -177,10 +177,15 @@ class News(db.Model):
 def add_grants_info():
     rss_grants_data_dict_list, rss_news_data_dict_list = load_global.load_all()
     for news_dict in rss_news_data_dict_list:
-        if News.query.filter_by(link=news_dict['link']).first():
+        if news_dict == None:
+            continue
+        news_exists = News.query.filter_by(link=news_dict['link']).first()
+        db.session.commit()
+        if news_exists:
             continue
         new_news = News(title=news_dict['titulo'], description=news_dict['summary'], link=news_dict['link'], datetime=news_dict['pubDate'])
         db.session.add(new_news)
+        db.session.commit()
     scraped_news_list = get_scraped_news()
     for n_dict in scraped_news_list:
         if n_dict != None:
@@ -192,7 +197,7 @@ def add_grants_info():
                 print(date)
                 new_news = News(title=title, description='', link=data_dict['href'], datetime=date)
                 db.session.add(new_news)
-    db.session.commit()
+                db.session.commit()
 
 scheduler = BackgroundScheduler()
 add_grants_info()
