@@ -288,6 +288,7 @@ def fund_searcher():
     for n in news:
         new_grants_list.append({"titulo": n.title, "link":n.link ,"summary":n.description, "pubDate":n.datetime})
     new_grants_list = filter_grants(new_grants_list)
+    print(new_grants_list)
     new_grants_list.sort(key=lambda item:item['pubDate'], reverse=True)
     new_grants_list = ordenar_dates(new_grants_list)
     new_grants_list = clean_events(new_grants_list)
