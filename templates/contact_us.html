@@ -60,14 +60,14 @@ BUG
 {% block content %}  
   <br>
   <div class="container" id="div_contact_form">
-  <form class="form-contact" method="POST" action="/contact_us">
-    <h1 id="escribenos_titulo">Escríbenos</h1>
-      {{ form.hidden_tag() }}
-      {{ wtf.form_field(form.email) }}
-      {{ wtf.form_field(form.text) }}
-    <button type="submit" class="btn btn-primary">Enviar</button>
-  </form>
-</div>
+    <form class="form-contact" method="POST" action="/contact_us">
+      <h1 id="escribenos_titulo">Escríbenos</h1>
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.email) }}
+        {{ wtf.form_field(form.text) }}
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+  </div>
   <h1 align="center">O envía un email a <b>info@bug-network.com</b></h1>
   <br>
 <div id="footer_website">

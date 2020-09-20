@@ -268,16 +268,20 @@ def get_important_words(description):
 def get_search_matches(text, new_grants_list):
     clean_text = get_important_words(text)
     list_posible_grants = list()
-    for grant in new_grants_list:
-        dict_posible_grant = {"titulo": grant["titulo"], "num": 0, "pubDate": grant["pubDate"], "summary": grant["summary"], "link": grant["link"]}
-        important_words = get_important_words(str(grant["titulo"].lower()+" "+grant["summary"].lower()))
-        for word in clean_text:
-            if word in important_words:
-                dict_posible_grant['num'] += 1
-                continue
-        if dict_posible_grant["num"] > 0:
-            list_posible_grants.append(dict_posible_grant)
-    return list_posible_grants
+    try:
+        if len(new_grants_list) >=30:
+            for grant in new_grants_list[:30]:
+                dict_posible_grant = {"titulo": grant["titulo"], "num": 0, "pubDate": grant["pubDate"], "summary": grant["summary"], "link": grant["link"]}
+                important_words = get_important_words(str(grant["titulo"].lower()+" "+grant["summary"].lower()))
+                for word in clean_text:
+                    if word in important_words:
+                        dict_posible_grant['num'] += 1
+                        continue
+                if dict_posible_grant["num"] > 0:
+                    list_posible_grants.append(dict_posible_grant)
+                return list_posible_grants
+    except:
+        return list_posible_grants
 
 @app.route("/fund_searcher", methods=['GET', 'POST'])
 def fund_searcher():
@@ -295,7 +299,8 @@ def fund_searcher():
     if form.validate_on_submit(): 
         text = form.text.data
         list_posible_grants = get_search_matches(text, new_grants_list)
-        top_list = sorted(list_posible_grants, key=lambda k: k['num'], reverse=True)
+        if len(list_posible_grants) > 0:
+            top_list = sorted(list_posible_grants, key=lambda k: k['num'], reverse=True)
         return render_template("fund_searcher.html", name="fund_searcher", current_user=current_user, new_grants_list=top_list, form=form)
     return render_template("fund_searcher.html", name="fund_searcher", current_user=current_user, new_grants_list=new_grants_list, form=form)
 
