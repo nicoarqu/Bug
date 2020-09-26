@@ -271,15 +271,16 @@ def get_search_matches(text, new_grants_list):
     try:
         if len(new_grants_list) >=30:
             for grant in new_grants_list[:30]:
-                print(grant["titulo"])
                 dict_posible_grant = {"titulo": grant["titulo"], "num": 0, "pubDate": grant["pubDate"], "summary": grant["summary"], "link": grant["link"]}
-                important_words = get_important_words(str(grant["titulo"].lower()+" "+grant["summary"].lower()))
+                important_words = get_important_words(str(grant["titulo"].lower()+" "+str(grant["summary"]).lower()))
                 for word in clean_text:
                     if word in important_words:
+                        print("si")
                         dict_posible_grant['num'] += 1
                         continue
                 if dict_posible_grant["num"] > 0:
                     list_posible_grants.append(dict_posible_grant)
+                print(list_posible_grants)
                 return list_posible_grants
     except:
         return list_posible_grants
@@ -293,7 +294,6 @@ def fund_searcher():
     for n in news:
         new_grants_list.append({"titulo": n.title, "link":n.link ,"summary":n.description, "pubDate":n.datetime})
     new_grants_list = filter_grants(new_grants_list)
-    print(new_grants_list)
     new_grants_list.sort(key=lambda item:item['pubDate'], reverse=True)
     new_grants_list = ordenar_dates(new_grants_list)
     new_grants_list = clean_events(new_grants_list)
