@@ -273,6 +273,8 @@ def get_search_matches(text, new_grants_list):
             for grant in new_grants_list[:30]:
                 dict_posible_grant = {"titulo": grant["titulo"], "num": 0, "pubDate": grant["pubDate"], "summary": grant["summary"], "link": grant["link"]}
                 important_words = get_important_words(str(grant["titulo"].lower()+" "+str(grant["summary"]).lower()))
+                print(clean_text)
+                print(important_words)
                 for word in clean_text:
                     if word in important_words:
                         print("si")
