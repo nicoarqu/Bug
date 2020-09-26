@@ -270,21 +270,16 @@ def get_search_matches(text, new_grants_list):
     list_posible_grants = list()
     try:
         if len(new_grants_list) >=30:
-            print(new_grants_list[:30])
             for grant in new_grants_list[:30]:
                 dict_posible_grant = {"titulo": grant["titulo"], "num": 0, "pubDate": grant["pubDate"], "summary": grant["summary"], "link": grant["link"]}
                 important_words = get_important_words(str(grant["titulo"].lower()+" "+str(grant["summary"]).lower()))
-                print(clean_text)
-                print(important_words)
                 for word in clean_text:
                     if word in important_words:
-                        print("si")
                         dict_posible_grant['num'] += 1
                         continue
                 if dict_posible_grant["num"] > 0:
                     list_posible_grants.append(dict_posible_grant)
-                print(list_posible_grants)
-                return list_posible_grants
+        return list_posible_grants
     except:
         return list_posible_grants
 
