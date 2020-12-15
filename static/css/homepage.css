@@ -35,6 +35,15 @@
 		text-shadow: none;
 	}
 
+	#articulo_innombrables{
+		color: black;
+		text-decoration: none;
+	}
+
+	#articulo_innombrables:hover{
+		text-decoration: none;
+	}
+
 	#welcome_homepage_div{
 		background-color: white;
 		height: 80vh;

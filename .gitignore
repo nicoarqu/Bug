@@ -3,3 +3,5 @@ command_line_flask.txt
 bug-network.csr
 bug-network.key
 server.key
+bug_database.db-journal
+database
