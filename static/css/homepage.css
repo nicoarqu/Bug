@@ -25,7 +25,6 @@
 
 	.carousel-caption{
 		float:left;
-		margin-bottom: 60px;
 	}
 
 	.carousel-text{
@@ -691,7 +690,7 @@
 	.carousel-text{
 		font-size: 4.5em;
 		color: white;
-		padding-bottom: 4%;
+		padding-bottom: -6%;
 		text-shadow: none;
 	}
 
