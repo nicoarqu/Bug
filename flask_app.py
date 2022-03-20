@@ -26,8 +26,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
+DATABASE_URL = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 
 app = Flask(__name__)
+app.config.from_object(os.environ['APP_SETTINGS'])
 babel = Babel(app)
 
 mail_settings = {
@@ -41,7 +43,6 @@ mail_settings = {
 app.config.update(mail_settings)
 app.config.from_object(__name__)
 random.seed()
-DATABASE_URL = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 app.config['LANGUAGES'] = {
