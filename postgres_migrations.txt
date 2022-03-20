@@ -2,10 +2,10 @@ python3 manage.py db init
 python3 manage.py db migrate
 python3 manage.py db upgrade
 
-heroku config --app justforfund
-heroku addons:create heroku-postgresql:hobby-dev --app justforfund
-heroku config --app justforfund
-heroku run python manage.py db upgrade --app justforfund
+heroku config --app bugnetworkapp
+heroku addons:create heroku-postgresql:hobby-dev --app bugnetworkapp
+heroku config --app bugnetworkapp
+heroku run python manage.py db upgrade --app bugnetworkapp
 
 git add .
 git commit -m "change in database"
