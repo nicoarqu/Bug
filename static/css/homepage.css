@@ -40,20 +40,6 @@
 		height: 80vh;
 	}
 
-	#bug_title_logo {
-		margin: auto;
-		margin-right: 9%;
-	}
-
-	#bug_image_logo{
-		width:110%;
-		height: 110%;
-		margin-left: auto;
-  		margin-right: auto;
-  		margin-bottom: 20px;
-  		display: block;
-	}
-
 	#services_div{
 		background-color: #EBF15E;
 		height: 720px;
@@ -248,19 +234,6 @@
 	#welcome_homepage_div{
 		background-color: white;
 		height: 97vh;
-	}
-
-
-	#bug_title_logo {
-		margin: auto;
-		padding-right: 7%;
-	}
-
-	#bug_image_logo{
-		margin-left: auto;
-  		margin-right: auto;
-  		display: block;
-  		margin-right: 7%;
 	}
 
 	#services_div{
@@ -464,16 +437,6 @@
 		height: 97vh;
 	}
 
-	#bug_title_logo {
-		margin: auto;
-	}
-
-	#bug_image_logo{
-		margin-left: auto;
-  		margin-right: auto;
-  		display: block;
-	}
-
 	#services_div{
 		background-color: #EBF15E;
 		background-size: 1700px 900px;
@@ -617,7 +580,6 @@
 		left: 45%;
 		top: 8%;
 		font-size: 7rem;
-		color: 
 	}
 
 	#rights_reserved{
@@ -647,12 +609,6 @@
 		left:42%;
 		display: block;
 		position: absolute;
-	}
-
-	#bug_image_logo{
-		margin-left: auto;
-  		margin-right: auto;
-  		display: block;
 	}
 
 	#logo_img{
@@ -689,18 +645,6 @@
 	#welcome_homepage_div{
 		background-color: white;
 		height: 97vh;
-	}
-
-	#bug_title_logo {
-		margin: auto;
-	}
-
-	#bug_image_logo{
-		margin-left: auto;
-  		margin-right: auto;
-  		display: block;
-  		width:40%;
-		height: 40%;
 	}
 
 	#services_div{
