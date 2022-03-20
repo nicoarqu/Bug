@@ -93,32 +93,32 @@ def organize_dates(new_news_list):
     return new_ordered_news_list
 
 def add_grants(grants_list):
-	grants_list = filter_grants(grants_list)
-	grants_list.sort(key=lambda item:item['pubDate'], reverse=True)
-	grants_list = organize_dates(grants_list)
-	grants_list = clean_events(grants_list)
-	for grant_dict in grants_list:
-		if grant_dict == None:
-			continue
-		grant_exists = Grants.query.filter_by(link=grant_dict['link']).first()
-		db.session.commit()
-		if grant_exists:
-			continue
-		new_grant = Grants(title=grant_dict['titulo'], description=grant_dict['summary'], link=grant_dict['link'], datetime=grant_dict['pubDate'])
-		db.session.add(new_grant)
-		db.session.commit()
-	scraped_grant_list = get_scraped_data()
-	for n_dict in scraped_grant_list:
-		if n_dict != None:
-			for title, data_dict in n_dict.items():
-				grant_exists = Grants.query.filter_by(link=data_dict['href']).first()
-				db.session.commit()
-				if grant_exists:
-					continue
-				date = "  {} {} {}".format(datetime.now().day, datetime.now().strftime("%b"), datetime.now().year)
-				new_grant = Grants(title=title, description='', link=data_dict['href'], datetime=date)
-				db.session.add(new_grant)
-				db.session.commit()
+    grants_list = filter_grants(grants_list)
+    grants_list.sort(key=lambda item:item['pubDate'], reverse=True)
+    grants_list = organize_dates(grants_list)
+    grants_list = clean_events(grants_list)
+    print(grants_list)
+    for grant_dict in grants_list:
+        if grant_dict == None:
+            continue
+        grant_exists = Grants.query.filter_by(link=grant_dict['link']).first()
+        if grant_exists:
+            continue
+        new_grant = Grants(title=grant_dict['titulo'], description=grant_dict['summary'], link=grant_dict['link'], datetime=grant_dict['pubDate'])
+        db.session.add(new_grant)
+        db.session.commit()
+    scraped_grant_list = get_scraped_data()
+    for n_dict in scraped_grant_list:
+        if n_dict != None:
+            for title, data_dict in n_dict.items():
+                grant_exists = Grants.query.filter_by(link=data_dict['href']).first()
+                db.session.commit()
+                if grant_exists:
+                    continue
+                date = "  {} {} {}".format(datetime.now().day, datetime.now().strftime("%b"), datetime.now().year)
+                new_grant = Grants(title=title, description='', link=data_dict['href'], datetime=date)
+                db.session.add(new_grant)
+                db.session.commit()
 
 def add_news(news_list):
     for news_dict in news_list:
@@ -149,7 +149,6 @@ def crawl_new_data():
 	rss_grants_data_dict_list, rss_news_data_dict_list = load_global.load_all()
 	add_grants(rss_grants_data_dict_list)
 	add_news(rss_news_data_dict_list)
-
 
 if __name__ == "__main__":
     crawl_new_data()
