@@ -186,7 +186,7 @@ def news():
     for n in news:
         new_news_list.append({"titulo": n.title, "link":n.link ,"summary":n.description, "pubDate":n.datetime})
     new_news_list.sort(key=lambda item:item['pubDate'], reverse=True)
-    return render_template("events.html", name="events", current_user=current_user, new_news_list=new_news_list)
+    return render_template("news.html", name="news", current_user=current_user, new_news_list=new_news_list)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
