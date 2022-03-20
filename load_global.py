@@ -1,8 +1,8 @@
-import smtplib
 import datetime
 import json
 import feedparser
 import re
+from models import News, Grants
 
 def cleanhtml(raw_html):
   cleanr = re.compile('<.*?>')
@@ -45,7 +45,6 @@ def cargar_filtros():
     with open("data/filtering_words.json", 'r', encoding="utf-8") as filters_file:
         filters_dict = json.load(filters_file)
         return filters_dict 
-
 
 def cargar_combinaciones_palabras():
     with open("data/word_combinations.json", "r") as combinations_file:
@@ -132,7 +131,7 @@ def webscraper(webscraping_list):
         name = dict_webscraping["name"]
         url = dict_webscraping["url"]
         content_text = get_webscraping_content(name, url)
-    return
+    return None
 
 def rss_parser(rss_list):
     content_dicts_list = []
@@ -146,16 +145,17 @@ def rss_parser(rss_list):
     return content_dicts_list
 
 def organize_grants_info():
-    return
+    return None
 
 def organize_news_info():
-    return
+    return None
 
 def organize(grants_dict, news_dict):
     grants_webscraping_list = []
     grants_rss_list = []
     for fund_dict in grants_dict["funds"]:
         name = fund_dict["name"]
+        print(name)
         url = fund_dict["url"]
         type_data = fund_dict["type"]
         area = fund_dict["area"]

@@ -93,7 +93,6 @@ def obtain_grants_creativeeurope():
             title = ' '.join(title_list)
             title_list = title.split("        ")
             title = title_list[0][6:]
-            status
             print(title)
         return dict_news
     except:
