@@ -32,10 +32,10 @@ class Notifications(db.Model):
 class News(db.Model):
     __tablename__ = 'News'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100))
-    description = db.Column(db.String(1000))
+    title = db.Column(db.String(1000))
+    description = db.Column(db.String(50000))
     link = db.Column(db.String(1000))
-    datetime = db.Column(db.String(50))
+    datetime = db.Column(db.String(500))
 
     def __init__(self, title, description, link, datetime):
         self.title = title
@@ -49,8 +49,8 @@ class News(db.Model):
 class Grants(db.Model):
     __tablename__ = 'Grants'
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100))
-    description = db.Column(db.String(1000))
+    title = db.Column(db.String(1000))
+    description = db.Column(db.String(50000))
     link = db.Column(db.String(1000))
     datetime = db.Column(db.String(50))
 
