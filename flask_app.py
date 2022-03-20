@@ -10,9 +10,7 @@ nltk.download('punkt')
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 from nltk.tokenize import word_tokenize
-from collections import OrderedDict
-from urllib.parse import urlparse
-from flask import Flask, request, render_template, redirect, url_for, Response, jsonify
+from flask import Flask, request, render_template, jsonify
 from flask import session 
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
@@ -22,106 +20,11 @@ from wtforms.widgets import TextArea
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
-from datetime import datetime
-from flask_migrate import Migrate
-from flask_cors import CORS
-from flask_mail import Message, Mail
-from flask_babel import Babel, gettext
-from apscheduler.schedulers.background import BackgroundScheduler
-from webscraping_scripts import get_scraped_news
-import load_global
-import re
-
-
-def write_info_grants_json(rss_grants_data_dict_list, rss_news_data_dict_list):
-    compiled_data_dict = {}
-    with open("data/info_grants.json", 'w', encoding="utf-8") as compiled_data_file:
-        compiled_data_dict["grants"] = rss_grants_data_dict_list
-        compiled_data_dict["news"] = rss_news_data_dict_list
-        json.dump(compiled_data_dict, compiled_data_file)
-
-def add_grants_info():
-    rss_grants_data_dict_list, rss_news_data_dict_list = load_global.load_all()
-    write_info_grants_json(rss_grants_data_dict_list, rss_news_data_dict_list)
-
-def get_grants_info():
-    with open("data/info_grants.json", 'r', encoding="utf-8") as compiled_data_file:
-        compiled_data_dict = json.load(compiled_data_file)
-    return compiled_data_dict["grants"]
-
-def filter_grants(news_list):
-    grants_list = []
-    for news_dict in news_list:
-        if news_dict == None:
-            continue
-        if key_word_exists(news_dict):
-            grants_list.append(news_dict)
-    return grants_list
-
-def key_word_exists(news_dict):
-    key_words = []
-    with open("data/filtering_words.json", "r") as key_words_file:
-        file_dict = json.load(key_words_file)
-        key_words = file_dict["palabras"]
-        non_key_words = file_dict["palabras no queridas"]
-    text = news_dict["summary"] + " " + news_dict["titulo"] 
-    regex = re.compile('[^a-zA-Z]')
-    text = regex.sub(' ', text)
-    text_words = text.lower().split(" ")
-    for non_key_word in non_key_words:
-        if non_key_word in text_words:
-            return False
-    for key_word in key_words:
-        if key_word in text_words:
-            return True
-    return False
-
-def get_news_info():
-    with open("data/info_grants.json", 'r', encoding="utf-8") as compiled_data_file:
-        compiled_data_dict = json.load(compiled_data_file)
-    return compiled_data_dict["news"]
-
-def clean_events(events_list):
-    title_list = []
-    clean_events_list = []
-    if events_list:
-        for event in events_list:
-            title = event["titulo"]
-            if title in title_list:
-                continue
-            else:
-                event["summary"] = cleanhtml(event["summary"])
-                clean_events_list.append(event)
-                title_list.append(title)
-    return clean_events_list
-
-def cleanhtml(raw_html):
-    cleanr = re.compile('<.*?>')
-    cleantext = re.sub(cleanr, '', raw_html)
-    return cleantext
-
-def ordenar_dates(new_news_list):
-    ordered_list_dict = {"2021": {"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}, "2020":{"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}, "2019":{"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}}
-    for news_dict in new_news_list:
-        date_elements = news_dict["pubDate"].split(" ")
-        day = date_elements[1]
-        month = date_elements[2]
-        year = date_elements[3]
-        if year in ordered_list_dict.keys():
-            ordered_list_dict[year][month].append(news_dict)
-    for year in ordered_list_dict.keys():
-        year_dict = ordered_list_dict[year]
-        for month in year_dict.keys():
-            if year_dict[month]:
-                year_dict[month] = sorted(year_dict[month], key = lambda i: i['pubDate'].split(" ")[1], reverse=True)
-    new_ordered_news_list = []
-    for year_key in ordered_list_dict.keys():
-        for month_key in ordered_list_dict[year_key].keys():
-            for news_dict in ordered_list_dict[year_key][month_key]:
-                new_ordered_news_list.append(news_dict)
-    return new_ordered_news_list
-    
-
+from flask_mail import Mail
+from flask_babel import Babel
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
+from sqlalchemy.ext.declarative import declarative_base
 
 
 app = Flask(__name__)
@@ -138,73 +41,36 @@ mail_settings = {
 app.config.update(mail_settings)
 app.config.from_object(__name__)
 random.seed()
+DATABASE_URL = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///bug_database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
 app.config['LANGUAGES'] = {
     'en': 'English',
     'es': 'Español'
 }
+app.config['RECAPTCHA_USE_SSL']= False
+app.config['RECAPTCHA_PUBLIC_KEY']=os.environ.get("RECAPTCHA_PUBLIC_KEY")
+app.config['RECAPTCHA_PRIVATE_KEY']=os.environ.get("RECAPTCHA_PRIVATE_KEY")
+app.config['RECAPTCHA_OPTIONS']= {'theme':'black'}
 
 Bootstrap(app)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 mail = Mail(app)
 
+engine = create_engine(DATABASE_URL)
+db_session = scoped_session(sessionmaker(autocommit=False,
+                                         autoflush=False,
+                                         bind=engine))
 
-def send_mail(recipient_mail, subject, html):
-    with app.app_context():
-        msg = Message(subject="{}".format(subject),
-                      sender=app.config.get("MAIL_USERNAME"),
-                      recipients=[recipient_mail], # replace with your email for testing
-                      html=html)
-        mail.send(msg)
+from models import Users, Notifications, News, Grants
+Base = declarative_base()
+Base.query = db_session.query_property()
 
-class Users(UserMixin, db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    nationality = db.Column(db.String(50))
-    email = db.Column(db.String(50), unique=True)
-    password = db.Column(db.String(80))
 
-class News(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100))
-    description = db.Column(db.String(1000))
-    link = db.Column(db.String(1000))
-    datetime = db.Column(db.String(50))
-
-def add_grants_info():
-    rss_grants_data_dict_list, rss_news_data_dict_list = load_global.load_all()
-    for news_dict in rss_news_data_dict_list:
-        if news_dict == None:
-            continue
-        news_exists = News.query.filter_by(link=news_dict['link']).first()
-        db.session.commit()
-        if news_exists:
-            continue
-        new_news = News(title=news_dict['titulo'], description=news_dict['summary'], link=news_dict['link'], datetime=news_dict['pubDate'])
-        db.session.add(new_news)
-        db.session.commit()
-    scraped_news_list = get_scraped_news()
-    for n_dict in scraped_news_list:
-        if n_dict != None:
-            for title, data_dict in n_dict.items():
-                news_exists = News.query.filter_by(link=data_dict['href']).first()
-                db.session.commit()
-                if news_exists:
-                    continue
-                date = "  {} {} {}".format(datetime.now().day, datetime.now().strftime("%b"), datetime.now().year)
-                new_news = News(title=title, description='', link=data_dict['href'], datetime=date)
-                db.session.add(new_news)
-                db.session.commit()
-
-scheduler = BackgroundScheduler()
-add_grants_info()
-scheduler.add_job(add_grants_info, "interval", seconds=600)
-scheduler.start()
 """--------------------------------------------------------------------------------------------------------------------------------"""
 """-------------------------------------------------------SESSION------------------------------------------------------------------"""
 """--------------------------------------------------------------------------------------------------------------------------------"""
@@ -216,7 +82,6 @@ def get_locale():
 @login_manager.user_loader
 def load_user(user_id):
     return Users.query.get(int(user_id))
-
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[InputRequired(), Email(
@@ -255,10 +120,9 @@ def contact_us():
     form = ContactForm()
     email = form.email.data
     text = form.text.data
-    content_html= "<br><p>{}</p><br><p>{}</p>".format(text, email)
-    if form.validate_on_submit():
-        send_mail(app.config.get("MAIL_USERNAME"), "Cliente quiere contactarse", content_html)
+    num_notifications = 0
     return render_template("contact_us.html", name="contact_us", current_user=current_user, form=form)
+
 
 def get_important_words(description):
     text_tokens = word_tokenize(description)
@@ -287,14 +151,10 @@ def get_search_matches(text, new_grants_list):
 def fund_searcher():
     form = SearchForm()
     top_list = list()
-    news = News.query.all()
+    grants = Grants.query.all()
     new_grants_list = []
-    for n in news:
-        new_grants_list.append({"titulo": n.title, "link":n.link ,"summary":n.description, "pubDate":n.datetime})
-    new_grants_list = filter_grants(new_grants_list)
-    new_grants_list.sort(key=lambda item:item['pubDate'], reverse=True)
-    new_grants_list = ordenar_dates(new_grants_list)
-    new_grants_list = clean_events(new_grants_list)
+    for grant in grants:
+        new_grants_list.append({"titulo": grant.title, "link":grant.link ,"summary":grant.description, "pubDate":grant.datetime})
     if form.validate_on_submit(): 
         text = form.text.data
         list_posible_grants = get_search_matches(text, new_grants_list)
@@ -310,22 +170,21 @@ def matching():
     text = form.text.data
     content_html= "<br><p>{}</p><br><p>{}</p>".format(text, email)
     if form.validate_on_submit():
-        send_mail(app.config.get("MAIL_USERNAME"), "Cliente quiere contactarse", content_html)
+        #send_mail(app.config.get("MAIL_USERNAME"), "Cliente quiere contactarse", content_html)
+        pass
     return render_template("matching.html", name="matching", current_user=current_user, form=form)
 
 @app.route("/resources")
 def resources():
     return render_template("resources.html", name="resources", current_user=current_user)
 
-@app.route("/events")
-def events():
+@app.route("/news")
+def news():
     new_news_list = list()
     news = News.query.all()
     for n in news:
         new_news_list.append({"titulo": n.title, "link":n.link ,"summary":n.description, "pubDate":n.datetime})
     new_news_list.sort(key=lambda item:item['pubDate'], reverse=True)
-    new_news_list = ordenar_dates(new_news_list)
-    new_news_list = clean_events(new_news_list)
     return render_template("events.html", name="events", current_user=current_user, new_news_list=new_news_list)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -351,7 +210,7 @@ def signup():
             hashed_password = generate_password_hash(
                 form.password.data, method='sha256')
             new_user = Users(email=form.email.data, password=hashed_password, name=form.name.data, nationality=form.nationality.data)
-            send_mail(form.email.data,"Bienvenido/a a BUG" ,"Te damos la bienvenida a BUG Creative Industry Network {}".format(form.name.data))
+            #send_mail(form.email.data,"Bienvenido/a a BUG" ,"Te damos la bienvenida a BUG Creative Industry Network {}".format(form.name.data))
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
@@ -392,6 +251,7 @@ def profile():
 
 if __name__ == "__main__":
     db.create_all()
+    Base.metadata.create_all(bind=engine)
     from argparse import ArgumentParser
     parser = ArgumentParser()
     parser.add_argument('-p', '--port', default=5000,

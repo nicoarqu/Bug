@@ -58,7 +58,7 @@
     },
     {
       "name": "On-The-Move",
-      "url": "feed://on-the-move.org/rss/news/",
+      "url": "https://on-the-move.org/feed",
       "location": "worldwide",
       "type": "rss",
       "area": "multiple"

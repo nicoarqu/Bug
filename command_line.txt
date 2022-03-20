@@ -1,0 +1,10 @@
+export FLASK_APP=flask_app.py
+export APP_SETTINGS="config.DevelopmentConfig"
+export FLASK_ENV=develop 
+export FLASK_DEBUG=1
+export ADMIN=MatiasMingo
+export SECRET_KEY=mitsein247
+export DATABASE_URL="postgres:///bug_website"
+export EMAIL_USER=contact@codefix.cl
+export EMAIL_PASSWORD=Mitsein247
+flask run

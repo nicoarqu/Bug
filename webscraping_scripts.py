@@ -99,10 +99,10 @@ def obtain_grants_creativeeurope():
     except:
         return{}
 
-def get_scraped_news():
-    news_list = []
-    news_list.append(obtain_news_eeagrants())
-    news_list.append(obtain_news_nordiskkulturkontakt())
-    news_list.append(obtain_news_culturalfoundation())
-    return news_list
+def get_scraped_data():
+    data_list = []
+    data_list.append(obtain_news_eeagrants())
+    data_list.append(obtain_news_nordiskkulturkontakt())
+    data_list.append(obtain_news_culturalfoundation())
+    return data_list
 

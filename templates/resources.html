@@ -13,70 +13,18 @@ BUG
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 {% endblock %}
 
-{% block navbar %}
-<div id="main_page">
-  <nav class="navbar navbar-expand-lg">
-    <a href="/"><img src="static/images/bug_logo.png" style="width:87px;height:100px;margin-top:20px;margin-left:-10px;" /></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto" id="navbar-content">
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage"  href="/about_us" role="button">
-              Nosotros
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage"  href="/contact_us" role="button">
-              Contáctanos
-            </a>
-          </li>
-          {% if not session['logged_in'] %}
-            <li class="nav-item">
-              <a class="nav-link nav_link_homepage"  href="/signup" role="button">
-                Regístrate
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav_link_homepage" href="/login" role="button">
-                Ingresa
-              </a>
-            </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link nav_link_homepage" href="/profile" role="button">
-                Perfil
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav_link_homepage" href="/logout" role="button">
-                Salir
-              </a>
-            </li>
-          {% endif %}
-        </ul>
-      </div>
-  </nav>
-{% endblock %}
+{% include "header.html" %}
 
 {% block content %}
 <div >
-  <br>
-  <br>
-  <br>
-  <br>
-  <h1 align="center">Esta página está en desarrollo</h1>
-  <svg width="5em" height="5em" class="hammer_icon" viewBox="0 0 16 16" class="bi bi-hammer" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9.812 1.952a.5.5 0 0 1-.312.89c-1.671 0-2.852.596-3.616 1.185L4.857 5.073V6.21a.5.5 0 0 1-.146.354L3.425 7.853a.5.5 0 0 1-.708 0L.146 5.274a.5.5 0 0 1 0-.706l1.286-1.29a.5.5 0 0 1 .354-.146H2.84C4.505 1.228 6.216.862 7.557 1.04a5.009 5.009 0 0 1 2.077.782l.178.129z"/>
-    <path fill-rule="evenodd" d="M6.012 3.5a.5.5 0 0 1 .359.165l9.146 8.646A.5.5 0 0 1 15.5 13L14 14.5a.5.5 0 0 1-.756-.056L4.598 5.297a.5.5 0 0 1 .048-.65l1-1a.5.5 0 0 1 .366-.147z"/>
-  </svg>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+  <div>
+    <h1 id="articulo_innombrables"><a href="https://revistaempresarial.com/gestion-humana/dinamizar-el-ecosistema-de-la-cultura-y-las-artes/">Artículo de nuestra fundadora Mónica Seguel: Dinamizar el Ecosistema de la Cultura y las Artes</a></h1>
+    <img src="static/images/articulo2.png" alt="Chania" style="width:600px;height:500px;">
+  </div>
+  <div>
+    <h1 id="articulo_innombrables"><a href="https://revistaempresarial.com/industria/los-innombrables/">Artículo de nuestra fundadora Mónica Seguel: "Los Innombrables"</a></h1>
+    <img src="static/images/articulo_los_innombrables.png" alt="Chania" style="width:600px;height:500px;">
+  </div>
 </div>
 <div id="footer_website">
   <div id="social_media_footer">

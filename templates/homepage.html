@@ -21,62 +21,12 @@ BUG
 
   gtag('config', 'UA-177939375-1');
 </script>
-
 {% endblock %}
 
+{% include "header.html" %}
 
 {% block content %}
 <div id=complete_homepage>
-  <div id="bug_title_logo">
-    <img id="bug_image_logo" src="static/images/homepage_logo.png" />
-  </div>
-  <br>
-  <div id="nav_section_homepage">
-    <nav class="navbar navbar-expand-sm" id="navbar_homepage">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto" id="navbar-content">
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage"  href="/about_us" role="button">
-              Nosotros
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav_link_homepage"  href="/contact_us" role="button">
-              Contáctanos
-            </a>
-          </li>
-          {% if not session['logged_in'] %}
-            <li class="nav-item">
-              <a class="nav-link nav_link_homepage"  href="/signup" role="button">
-                Regístrate
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav_link_homepage" href="/login" role="button">
-                Ingresa
-              </a>
-            </li>
-          {% else %}
-            <li class="nav-item">
-              <a class="nav-link nav_link_homepage" href="/profile" role="button">
-                Perfil
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link nav_link_homepage" href="/logout" role="button">
-                Salir
-              </a>
-            </li>
-          {% endif %}
-        </ul>
-      </div>
-    </nav>
-  </div>
-</div>
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -85,9 +35,23 @@ BUG
   </ol>
   <div class="carousel-inner">
     <div class="item active">
-      <img src="static/images/articulo_los_innombrables.png" alt="Chania" style="width:600px;height:500px;">
+      <img src="static/images/background1.jpg" alt="Chania" style="width:700px;height:500px;">
       <div class="carousel-caption">
-        <h1 class="carousel-text" id="articulo_innombrables"><a href="https://revistaempresarial.com/industria/los-innombrables/">Artículo de nuestra fundadora Mónica Seguel en la revista Empresarial y Laboral de Colombia</a></h1>
+        <h1 class ="carousel-text">Una red global para las Industrias Creativas.</h1>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="static/images/background2.jpg" alt="Chicago" style="width:720px;height:500px;">
+      <div class="carousel-caption">
+        <h1 class ="carousel-text">Creamos puentes entre financiadores y creadores.</h1>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="static/images/background3.jpg" alt="New York" style="width:700px;height:500px;">
+      <div class="carousel-caption">
+        <h1 class ="carousel-text">Si tienes algún proyecto en mente te queremos ayudar.</h1>
       </div>
     </div>
   </div> 
@@ -104,9 +68,9 @@ BUG
   <h1 align="center" id="title_network">Servicios</h1>
   <div class="row">
     <div class="col grid_item">
-      <a href="/matching" class="title_service_link"><h2 align="center" class="title_service">Match Making</h2></a>
+      <a href="/matching" class="title_service_link"><h2 align="center" class="title_service">Matchmaking</h2></a>
       <br>
-      <p class="texto_service" align="center">Un encuentro entre la Industria Tradicional y diferentes áreas de la Industria Creativa.</p>
+      <p class="texto_service" align="center">PRONTO... Un encuentro entre la Industria Tradicional y los servicios creativos.</p>
     </div>
     <div class="col grid_item">
       <a href="/fund_searcher" class="title_service_link"><h2 align="center" class="title_service">Buscador de Subsidios</h2></a>
@@ -127,7 +91,7 @@ BUG
   </div>
 </div>
 <div id="homepage_description">
-  <h1 align="center" class="homepage_description_text"><b>Queremos dinamizar el Ecosistema de las Industrias Creativas creando puentes inesperados y facilitando el acceso a información vital para su desarrollo.</b></h1>
+  <h1 align="center" class="homepage_description_text"><b>Queremos dinamizar el Ecosistema de las industrias creativas creando puentes inesperados y facilitando el acceso a información vital para su desarrollo.</b></h1>
 </div>
 <div id="footer_website">
   <div id="social_media_footer">
