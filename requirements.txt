@@ -161,7 +161,7 @@ typing-extensions==3.7.4.3
 typing-inspect==0.7.1
 tzdata==2021.4
 tzlocal==2.1
-ujson==4.2.0
+ujson==5.4.0
 urllib3==1.26.7
 virtualenv==20.10.0
 virtualenv-clone==0.5.7
