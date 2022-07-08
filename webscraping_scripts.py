@@ -1,7 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 import re
-import datetime
 
 
 def obtain_content(url):
