@@ -72,7 +72,9 @@ def cleanhtml(raw_html):
     return cleantext
 
 def organize_dates(new_news_list):
-    ordered_list_dict = {"2021": {"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}, "2020":{"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}, "2019":{"Dec":[],"Nov":[],"Oct":[],"Sep":[],"Aug":[],"Jul":[],"Jun":[],"May":[],"Apr":[],"Mar":[],"Feb":[],"Jan":[]}}
+    ordered_list_dict = {}
+    for n in range(50):
+        ordered_list_dict["{}".format(2018+n)] = {"Dec": [], "Nov": [], "Oct": [], "Sep": [], "Aug": [], "Jul": [], "Jun": [], "May": [], "Apr": [], "Mar": [], "Feb": [], "Jan": []}
     for news_dict in new_news_list:
         date_elements = news_dict["pubDate"].split(" ")
         day = date_elements[1]
