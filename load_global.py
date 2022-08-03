@@ -9,27 +9,6 @@ def cleanhtml(raw_html):
   cleantext = re.sub(cleanr, '', raw_html)
   return cleantext
 
-"""
-def escribir_rss_xml_mensual(diccionario_contenido_noticias):
-    mediaFeed = PyMediaRSS2Gen.MediaRSS2(
-        title="Noticias FinTech",
-        link="", #Cambiar a link Dropbox
-        description="Noticias FinTech recopiladas durante el día."
-    )
-    mediaFeed.copyright = "Copyright (c) 2019 Banco Central de Chile. All rights reserved."
-    mediaFeed.lastBuildDate = datetime.datetime.now()
-    mediaFeed.items = list()
-    for key, value in diccionario_contenido_noticias.items():
-        for noticia in value:
-            mediaFeed.items.append(PyMediaRSS2Gen.MediaRSSItem(
-                title=str(noticia["fuente"])+": "+noticia["titulo"]+" - "+" Puntaje: "+str(noticia["puntaje"]),
-                link=noticia["link"],
-                description=noticia["summary"],
-                pubDate=noticia["pubDate"]
-            ))
-    mediaFeed.write_xml(open("feed_rss.xml", "w"))
-"""
-
 def load_funds_dictionaries():
     with open("data/funds_grants.json", 'r') as grants_data:
         grants_dictionary = json.load(grants_data)
