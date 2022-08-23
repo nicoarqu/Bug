@@ -5,3 +5,6 @@ bug-network.key
 server.key
 bug_database.db-journal
 database
+.bug
+*.pyc
+record.md
